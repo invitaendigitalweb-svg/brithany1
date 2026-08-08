@@ -298,16 +298,6 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        .rsvp-inner h2 {
-            font-family: 'Cinzel', serif;
-            text-align: center;
-            color: #c48b91;
-            margin-bottom: 25px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            font-size: 24px;
-        }
-
         .form-group {
             margin-bottom: 22px;
         }
@@ -547,8 +537,6 @@
                 
                 <div class="rsvp-container-wrapper animate-flip-special">
                     <div class="rsvp-inner">
-                        <h2 id="titulo-form">Confirmación de Asistencia</h2>
-                        
                         <form id="asistenciaForm">
                             <div class="form-group">
                                 <label for="asistentes">¿Cuántas personas asistirán?</label>
@@ -748,7 +736,6 @@
 
             // Mostramos la pantalla de éxito inmediatamente
             document.getElementById('asistenciaForm').classList.add('hidden');
-            document.getElementById('titulo-form').innerText = "¡Gracias!";
             
             if (tipo !== '0') {
                 const img = document.getElementById('imgPase');
