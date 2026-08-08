@@ -384,17 +384,28 @@
             text-align: center; 
         }
 
-        #resultado-pase p {
+        /* Estilos corregidos y separados para el título de éxito y subtítulo */
+        #resultado-pase .titulo-exito {
             font-family: 'Cinzel', serif;
             color: #c48b91;
-            font-size: 18px;
-            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        #resultado-pase .subtitulo-exito {
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+            color: #666666;
+            margin-bottom: 20px;
+            line-height: 1.4;
         }
 
         #resultado-pase img {
             max-width: 100%;
             border-radius: 10px;
-            margin-top: 10px;
+            margin-top: 5px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             border: 1px solid #eee;
         }
@@ -581,8 +592,8 @@
                         </form>
 
                         <div id="resultado-pase" class="hidden">
-                            <p>¡Asistencia Confirmada!</p>
-                            <p style="font-size: 13px; font-family: 'Montserrat', sans-serif; color: #777; margin-top: -10px; margin-bottom: 15px;">Guarda tu pase digital en tu celular:</p>
+                            <div class="titulo-exito">¡Asistencia Confirmada!</div>
+                            <div class="subtitulo-exito">Guarda tu pase digital en tu celular:</div>
                             <img id="imgPase" src="" alt="Pase de acceso">
                             <a id="btnDescargar" class="btn btn-success" download>Descargar Pase</a>
                         </div>
@@ -720,9 +731,17 @@
 
         function cambiarOpciones() {
             const valor = document.getElementById('asistentes').value;
+            
+            // Si selecciona 1 asistente, mostramos solo la sección de 1 nombre
             document.getElementById('seccion-1').classList.toggle('hidden', valor !== '1');
-            document.getElementById('seccion-2').classList.toggle('hidden', valor !== '2');
+            
+            // Si selecciona 2 asistentes O si selecciona que no podrán asistir (0), mostramos los campos de los dos nombres
+            document.getElementById('seccion-2').classList.toggle('hidden', valor !== '2' && valor !== '0');
+            
+            // El campo de mensaje se muestra si elige 1 o 2 asistentes
             document.getElementById('seccion-mensaje').classList.toggle('hidden', valor === '0' || valor === '');
+            
+            // El botón de enviar para cuando no asisten se muestra solo si selecciona '0'
             document.getElementById('seccion-no-asisten').classList.toggle('hidden', valor !== '0');
         }
 
@@ -734,7 +753,7 @@
             // Enviamos los datos en segundo plano
             fetch(scriptURL, { method: 'POST', body: formData }).catch(error => console.error('Error:', error));
 
-            // Mostramos la pantalla de éxito inmediatamente
+            // Mostramos la pantalla de éxito o agradecimiento
             document.getElementById('asistenciaForm').classList.add('hidden');
             
             if (tipo !== '0') {
@@ -749,7 +768,7 @@
                 
                 document.getElementById('resultado-pase').classList.remove('hidden');
             } else {
-                alert("Gracias por avisarnos.");
+                alert("Gracias por avisarnos que no podrán asistir.");
                 location.reload();
             }
         });
