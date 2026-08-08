@@ -568,11 +568,11 @@
 
                             <div id="seccion-2" class="hidden">
                                 <div class="form-group">
-                                    <label for="nombre_a">Nombre del Asistente 1:</label>
+                                    <label id="label-nombre-a" for="nombre_a">Nombre del Asistente 1:</label>
                                     <input type="text" id="nombre_a" name="nombre_a" placeholder="Nombre completo">
                                 </div>
                                 <div class="form-group">
-                                    <label for="nombre_b">Nombre del Asistente 2:</label>
+                                    <label id="label-nombre-b" for="nombre_b">Nombre del Asistente 2:</label>
                                     <input type="text" id="nombre_b" name="nombre_b" placeholder="Nombre completo">
                                 </div>
                             </div>
@@ -580,7 +580,7 @@
                             <div id="seccion-mensaje" class="hidden">
                                 <div class="form-group">
                                     <label for="mensaje">Mensaje o felicitación (Opcional):</label>
-                                    <textarea id="mensaje" name="mensaje" placeholder="Escribe unas palabras para la festejada..."></textarea>
+                                    <textarea id="mensaje" name="mensaje" placeholder="Escribe unas palabras para los anfitriones..."></textarea>
                                 </div>
                                 <button type="submit" class="btn">Confirmar Asistencia</button>
                             </div>
@@ -731,6 +731,16 @@
 
         function cambiarOpciones() {
             const valor = document.getElementById('asistentes').value;
+            const labelA = document.getElementById('label-nombre-a');
+            const labelB = document.getElementById('label-nombre-b');
+
+            if (valor === '0') {
+                labelA.textContent = 'Nombre del Invitado 1:';
+                labelB.textContent = 'Nombre del Invitado 2:';
+            } else {
+                labelA.textContent = 'Nombre del Asistente 1:';
+                labelB.textContent = 'Nombre del Asistente 2:';
+            }
             
             // Si selecciona 1 asistente, mostramos solo la sección de 1 nombre
             document.getElementById('seccion-1').classList.toggle('hidden', valor !== '1');
