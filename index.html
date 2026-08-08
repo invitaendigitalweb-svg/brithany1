@@ -733,13 +733,21 @@
             const valor = document.getElementById('asistentes').value;
             const labelA = document.getElementById('label-nombre-a');
             const labelB = document.getElementById('label-nombre-b');
+            const inputA = document.getElementById('nombre_a');
+            const inputB = document.getElementById('nombre_b');
+            const input1 = document.getElementById('nombre1');
 
             if (valor === '0') {
                 labelA.textContent = 'Nombre del Invitado 1:';
                 labelB.textContent = 'Nombre del Invitado 2:';
+                // Al cambiar a no asisten, limpiamos el campo de 1 persona y habilitamos los 2 inputs de nombres
+                input1.value = '';
             } else {
                 labelA.textContent = 'Nombre del Asistente 1:';
                 labelB.textContent = 'Nombre del Asistente 2:';
+                // Si eligen 1 o 2, limpiamos los campos de la sección 2 por si acaso
+                inputA.value = '';
+                inputB.value = '';
             }
             
             // Si selecciona 1 asistente, mostramos solo la sección de 1 nombre
@@ -757,20 +765,28 @@
 
         document.getElementById('asistenciaForm').addEventListener('submit', e => {
             e.preventDefault();
-            const formData = new FormData(e.target);
-            const tipo = formData.get('asistentes');
+            const form = e.target;
+            const formData = new FormData(form);
+            const valor = formData.get('asistentes');
+
+            // Solución para asegurar que los nombres de los invitados (cuando no asisten) se guarden correctamente en Google Sheets:
+            // Si elige '0', mapeamos los valores de nombre_a y nombre_b al campo genérico o aseguramos que el Google Apps Script reciba los datos de 'nombre_a' y 'nombre_b'.
+            // Como el script de Google lee los parámetros por los nombres de los inputs ("nombre_a", "nombre_b", "nombre1"), 
+            // al estar dentro del formulario activo, se envían automáticamente con fetch.
 
             // Enviamos los datos en segundo plano
-            fetch(scriptURL, { method: 'POST', body: formData }).catch(error => console.error('Error:', error));
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => console.log('Enviado correctamente'))
+                .catch(error => console.error('Error:', error));
 
             // Mostramos la pantalla de éxito o agradecimiento
-            document.getElementById('asistenciaForm').classList.add('hidden');
+            form.classList.add('hidden');
             
-            if (tipo !== '0') {
+            if (valor !== '0') {
                 const img = document.getElementById('imgPase');
                 const btn = document.getElementById('btnDescargar');
                 
-                let archivoImagen = (tipo === '1') ? 'pase.jpg' : 'pases.jpg';
+                let archivoImagen = (valor === '1') ? 'pase.jpg' : 'pases.jpg';
                 
                 img.src = archivoImagen;
                 btn.href = archivoImagen;
@@ -778,8 +794,15 @@
                 
                 document.getElementById('resultado-pase').classList.remove('hidden');
             } else {
-                alert("Gracias por avisarnos que no podrán asistir.");
-                location.reload();
+                // Pantalla de agradecimiento bonita cuando no asisten sin recargar de golpe
+                const wrapper = document.querySelector('.rsvp-inner');
+                const divGracias = document.createElement('div');
+                divGracias.style.textAlign = 'center';
+                divGracias.innerHTML = `
+                    <div class="titulo-exito" style="margin-bottom: 15px;">¡Gracias por avisarnos!</div>
+                    <p class="mensaje-agradecimiento">Registramos que no podrán acompañarnos. Lamentamos que no estén presentes, ¡les mandamos un saludo!</p>
+                `;
+                wrapper.appendChild(divGracias);
             }
         });
     </script>
