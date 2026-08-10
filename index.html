@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis 15 Años</title>
 
-    <!-- Etiquetas Open Graph para la miniatura de WhatsApp -->
     <meta property="og:title" content="Mis 15 Años">
     <meta property="og:description" content="Te invito a celebrar este momento tan especial conmigo. Haz click para abrir tu invitación.">
     <meta property="og:image" content="portada.jpg">
@@ -31,7 +30,6 @@
             font-family: 'SS Abigail', serif;
         }
 
-        /* Pantalla de bienvenida / Sobre inicial */
         #welcome-screen {
             position: fixed;
             top: 0;
@@ -54,7 +52,6 @@
             object-position: center;
         }
 
-        /* Contenedor principal estilo tarjeta móvil centrada */
         .invitation-wrapper {
             width: 100%;
             max-width: 480px;
@@ -92,7 +89,6 @@
             display: block;
         }
 
-        /* Animación de entrada con zoom elegante */
         .animate-zoom {
             opacity: 0;
             transform: scale(0.95);
@@ -104,7 +100,6 @@
             transform: scale(1);
         }
 
-        /* Animación especial flotante/deslizante para vestimenta y regalos */
         .animate-float {
             opacity: 0;
             transform: translateY(40px);
@@ -116,7 +111,6 @@
             transform: translateY(0);
         }
 
-        /* Animación padrisima especial (Flip 3D con destello) para la sección de Asistencia */
         .animate-flip-special {
             opacity: 0;
             transform: perspective(1000px) rotateX(25deg) scale(0.85);
@@ -130,7 +124,6 @@
             filter: brightness(1);
         }
 
-        /* Sección de la cuenta regresiva en fondo blanco */
         .countdown-section {
             width: 100%;
             padding: 40px 20px 30px 20px;
@@ -175,8 +168,7 @@
             color: #A37E6B;
         }
 
-        /* Sección de Ceremonia y Ubicación */
-        .location-section {
+        .location-section, .reception-section {
             width: 100%;
             background-color: #F9EEEB;
             display: flex;
@@ -185,29 +177,12 @@
             padding: 20px 20px 45px 20px;
         }
 
-        .location-section img {
+        .location-section img, .reception-section img {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        /* Sección de Recepción */
-        .reception-section {
-            width: 100%;
-            background-color: #F9EEEB;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px 20px 45px 20px;
-        }
-
-        .reception-section img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Sección de la imagen de título de galería */
         .gallery-title-section {
             width: 100%;
             background-color: #f9f6f0;
@@ -224,7 +199,6 @@
             display: block;
         }
 
-        /* Sección del Carrusel con altura extendida */
         .gallery-section {
             width: 100%;
             background-color: #f9f6f0;
@@ -259,7 +233,6 @@
             opacity: 1;
         }
 
-        /* Botón personalizado de ubicación */
         .location-btn {
             display: inline-block;
             margin-top: 20px;
@@ -281,7 +254,6 @@
             background-color: #d8959b;
         }
 
-        /* Estilos específicos para el Formulario de Asistencia Integrado */
         #rsvp-section-wrapper {
             width: 100%;
             background-color: #f9f6f0;
@@ -369,50 +341,6 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
 
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #E5A6AC;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Control de Música */
-        #music-control {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 55px;
-            height: 55px;
-            background-color: #ffd1dc;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            z-index: 100;
-            border: 2px solid #ffffff;
-            transition: transform 0.3s ease;
-        }
-
-        #music-control:hover {
-            transform: scale(1.1);
-        }
-
-        #music-control svg {
-            width: 24px;
-            height: 24px;
-            fill: #555555;
-        }
-
         .hidden {
             opacity: 0;
             visibility: hidden;
@@ -433,31 +361,24 @@
 </head>
 <body>
 
-    <!-- Pantalla de Bienvenida -->
     <div id="welcome-screen" title="Haz clic para abrir">
         <img src="foto.jpg" alt="Sobre de invitación">
     </div>
 
-    <!-- Contenedor general en formato tarjeta estilo celular -->
     <div class="invitation-wrapper">
-        <!-- Contenido Principal -->
         <div id="main-content">
-            <!-- 1. Foto de Portada -->
             <section class="section-img">
                 <img src="portada.jpg" alt="Portada de la invitación de Mis 15 Años">
             </section>
 
-            <!-- 2. Foto de Frase -->
             <section class="section-img">
                 <img src="frase.jpg" alt="Frase de Mis 15 Años" class="animate-zoom">
             </section>
 
-            <!-- 3. Foto de Fecha -->
             <section class="section-img">
                 <img src="fecha.jpg" alt="Fecha de Mis 15 Años" class="animate-zoom">
             </section>
 
-            <!-- 4. Cuenta Regresiva -->
             <section class="countdown-section">
                 <div class="countdown">
                     <div class="block">
@@ -479,24 +400,20 @@
                 </div>
             </section>
 
-            <!-- 5. Foto de Ceremonia y Ubicación -->
             <section class="location-section">
                 <img src="ceremonia.jpg" alt="Detalles de ceremonia" class="animate-zoom">
-                <a href="https://www.google.com/maps/place/Parroquia+del+Sagrado+Coraz%C3%B3n+de+Jes%C3%BAs/@28.6262123,-106.0734464,859m/data=!3m2!1e3!4b1!4m6!3m5!1s0x86ea5caebcfb39a9:0x7142c0ef10e82b9b!8m2!3d28.6262123!4d-106.0711241!16s%2Fg%2F1tgdcw5w!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="location-btn">VER UBICACIÓN</a>
+                <a href="https://www.google.com/maps/place/Parroquia+del+Sagrado+Coraz%C3%B3n+de+Jes%C3%BAs/@28.6262123,-106.0734464,859m/data=!3m2!1e3!4b1!4m6!3m5!1s0x86ea5caebcfb39a9:0x7142c0ef10e82b9b!8m2!3d28.6262123!4d-106.0711241!16s%2Fg%2F1tgdcw5w!18m1!1e1?entry=ttu" target="_blank" class="location-btn">VER UBICACIÓN</a>
             </section>
 
-            <!-- 6. Foto de Recepción y Ubicación -->
             <section class="reception-section">
                 <img src="recepcion.jpg" alt="Detalles de recepción" class="animate-zoom">
-                <a href="https://www.google.com/maps/place/Quinta+kiri,+C.+Guadalupe+Posadas,+11+de+Febrero+Sur,+31066+Chihuahua,+Chih./data=!4m2!3m1!1s0x86ea5bac27293f75:0x64a47b49dd5ce364!18m1!1e1?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESBzI2LjI5LjIYACCenQoqnwEsOTQyNjc3MjcsOTQyOTIxOTUsOTQyOTk1MzIsMTAwNzk2NDk4LDEwMDc5Nzc2MSwxMDA3OTY1MzUsOTQyODA1NzYsOTQyMDczOTQsOTQyMDc1MDYsOTQyMDg1MDYsOTQyMTg2NTMsOTQyMjk4MzksOTQyNzUxNjgsOTQyNzk2MTksMTAwODE1NjM1LDEwMDgyMDIzNywxMDA4MjI0ODlCAk1Y&skid=04858c28-c6d2-4605-bc97-a16742ce76be&g_st=aw" target="_blank" class="location-btn">VER UBICACIÓN</a>
+                <a href="https://www.google.com/maps/place/Quinta+kiri,+C.+Guadalupe+Posadas,+11+de+Febrero+Sur,+31066+Chihuahua,+Chih./data=!4m2!3m1!1s0x86ea5bac27293f75:0x64a47b49dd5ce364!18m1!1e1" target="_blank" class="location-btn">VER UBICACIÓN</a>
             </section>
 
-            <!-- 7. Foto Título de Galería -->
             <section class="gallery-title-section">
                 <img src="galeria.jpg" alt="Galería de Mis 15 Años" class="animate-zoom">
             </section>
 
-            <!-- 8. Carrusel de Fotos -->
             <section class="gallery-section">
                 <div class="slider-container animate-zoom">
                     <img src="https://i.imgur.com/MSYBfYT.jpeg" class="active" alt="Foto 1">
@@ -505,36 +422,27 @@
                 </div>
             </section>
 
-            <!-- 9. Foto de Vestimenta -->
             <section class="section-img">
                 <img src="vestimenta.jpg" alt="Código de vestimenta" class="animate-float">
             </section>
 
-            <!-- 10. Foto de Regalo -->
             <section class="section-img">
                 <img src="regalo.jpg" alt="Sugerencia de regalo" class="animate-float">
             </section>
 
-            <!-- 11. Sección de Asistencia con la imagen superior y formulario interactivo abajo -->
             <section class="section-img" style="flex-direction: column;">
                 <img src="asistencia.jpg" alt="Confirmar asistencia" class="animate-flip-special" style="margin-bottom: 0;">
             </section>
 
             <div id="rsvp-section-wrapper" class="animate-flip-special">
                 <div class="container-rsvp">
-                    <!-- Pantalla de Carga Inicial -->
-                    <div id="loading-screen">
-                        <div class="loader"></div>
-                        <p style="font-size: 13px; color: #666;">Verificando estado de invitación...</p>
-                    </div>
-
-                    <!-- Formulario de Confirmación -->
-                    <form id="rsvp-form" class="hidden">
+                    <form id="rsvp-form">
                         <h2>Confirmación de Asistencia</h2>
                         
                         <div class="form-group">
-                            <label for="nombre">Nombre y Apellido *</label>
-                            <input type="text" id="nombre" name="nombre" required placeholder="Ej. María Pérez">
+                            <label for="nombre">Nombre y 2 Apellidos (Forzoso) *</label>
+                            <input type="text" id="nombre" name="nombre" required placeholder="Ej. Fernanda López Cruz">
+                            <small id="error-nombre" style="color: #d9534f; font-size: 11px; display: none; margin-top: 4px;">Debes ingresar obligatoriamente tu nombre y tus dos apellidos.</small>
                         </div>
 
                         <div class="form-group">
@@ -554,7 +462,6 @@
                         <button type="submit" id="btn-enviar" class="btn-rsvp">Enviar Confirmación</button>
                     </form>
 
-                    <!-- Pantalla de Pase / Ya confirmado -->
                     <div id="success-screen" class="hidden">
                         <h2 id="success-title">¡Gracias por confirmar!</h2>
                         <p id="success-message" style="font-size: 13px; margin-bottom: 15px; line-height: 1.4;">Tu respuesta ha sido registrada con éxito.</p>
@@ -562,7 +469,7 @@
                         <div class="pass-container" id="pass-section">
                             <p style="font-size: 13px; margin-bottom: 8px;"><strong>Tu Pase de Entrada:</strong></p>
                             <img src="pase.jpg" alt="Pase de Invitación" id="pase-img">
-                            <button id="btn-descargar" class="btn-rsvp">Descargar Pase</button>
+                            <button id="btn-descargar" class="btn-rsvp" style="margin-bottom: 10px;">Descargar Pase</button>
                         </div>
                     </div>
                 </div>
@@ -570,13 +477,11 @@
         </div>
     </div>
 
-    <!-- Reproductor de Audio -->
     <audio id="bg-music" loop>
         <source src="cancion.mp3" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
     </audio>
 
-    <!-- Botón flotante de música -->
     <div id="music-control" class="hidden" title="Reproducir / Pausar música">
         <svg id="icon-speaker" viewBox="0 0 24 24">
             <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
@@ -610,7 +515,7 @@
                 isPlaying = true;
                 updateMusicIcon();
             }).catch(error => {
-                console.log("Reproducción automática bloqueada por el navegador:", error);
+                console.log("Reproducción automática bloqueada:", error);
             });
         });
 
@@ -635,12 +540,8 @@
             }
         }
 
-        /* Animación de entrada al hacer scroll */
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
@@ -652,7 +553,6 @@
             observer.observe(el);
         });
 
-        /* Script del Carrusel de Fotos */
         const sliderImages = document.querySelectorAll('.slider-container img');
         let currentSlide = 0;
 
@@ -662,65 +562,60 @@
             sliderImages[currentSlide].classList.add('active');
         }, 3000);
 
-        /* Cuenta Regresiva actualizada al 22 de Agosto de 2026 a las 3:00 PM (15:00 hrs) */
         const DATE_TARGET = new Date(2026, 7, 22, 15, 0, 0);
-
         const days = document.getElementById('days');
         const hours = document.getElementById('hours');
         const minutes = document.getElementById('minutes');
         const seconds = document.getElementById('seconds');
 
-        const MS = 1000;
-        const MIN = MS * 60;
-        const H = MIN * 60;
-        const D = H * 24;
-
-        function format(n){
-            return n < 10 ? '0' + n : n;
-        }
+        const MS = 1000, MIN = MS * 60, H = MIN * 60, D = H * 24;
+        function format(n){ return n < 10 ? '0' + n : n; }
 
         (function updateCountdown(){
             const now = new Date();
             let dur = DATE_TARGET - now;
-
             if(dur < 0) dur = 0;
-
             days.textContent = Math.floor(dur / D);
             hours.textContent = format(Math.floor((dur % D) / H));
             minutes.textContent = format(Math.floor((dur % H) / MIN));
             seconds.textContent = format(Math.floor((dur % MIN) / MS));
-
             setTimeout(updateCountdown, 1000);
         })();
 
-        /* Lógica del Formulario de Asistencia y Google Apps Script */
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx9EowmhWaH1e8MjglJmeXDPROZbzjzic2n7kT0nWrs0RWddwlzPcSQunDB-iBGYayx/exec';
+        // Enlace actualizado de Google Apps Script
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzC--gpPAlnUk43sHlPzqOsLNJ0P1i3Z_z8swBJvXZC3tjdrxuP5svy6XFwDEevFsMS/exec';
 
-        const loadingScreen = document.getElementById('loading-screen');
         const rsvpForm = document.getElementById('rsvp-form');
         const successScreen = document.getElementById('success-screen');
         const successTitle = document.getElementById('success-title');
         const successMessage = document.getElementById('success-message');
         const passSection = document.getElementById('pass-section');
         const btnDescargar = document.getElementById('btn-descargar');
+        const inputNombre = document.getElementById('nombre');
+        const errorNombre = document.getElementById('error-nombre');
 
-        window.addEventListener('DOMContentLoaded', () => {
-            const localConfirmed = localStorage.getItem('invitacion_confirmada');
-            if (localConfirmed) {
-                mostrarPantallaExito(JSON.parse(localConfirmed));
-            } else {
-                loadingScreen.classList.add('hidden');
-                rsvpForm.classList.remove('hidden');
-            }
-        });
+        function validarNombreCompleto(texto) {
+            const palabras = texto.trim().split(/\s+/);
+            return palabras.length >= 3;
+        }
 
         rsvpForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+
+            const nombre = inputNombre.value.trim();
+            
+            if (!validarNombreCompleto(nombre)) {
+                errorNombre.style.display = 'block';
+                inputNombre.focus();
+                return;
+            } else {
+                errorNombre.style.display = 'none';
+            }
+
             const btnEnviar = document.getElementById('btn-enviar');
             btnEnviar.disabled = true;
-            btnEnviar.textContent = 'Procesando...';
+            btnEnviar.textContent = 'Verificando registro...';
 
-            const nombre = document.getElementById('nombre').value.trim();
             const asistencia = document.getElementById('asistencia').value;
             const mensaje = document.getElementById('mensaje').value.trim();
 
@@ -737,15 +632,14 @@
                 });
                 const result = await response.json();
 
-                if (result.status === 'duplicado') {
-                    alert('Atención: ' + result.message);
-                    const userData = { nombre: nombre, asistencia: result.asistencia || asistencia };
-                    localStorage.setItem('invitacion_confirmada', JSON.stringify(userData));
-                    mostrarPantallaExito(userData);
-                } else if (result.status === 'success') {
-                    const userData = { nombre: nombre, asistencia: asistencia };
-                    localStorage.setItem('invitacion_confirmada', JSON.stringify(userData));
-                    mostrarPantallaExito(userData);
+                if (result.status === 'success' || result.status === 'duplicado' || result.status === 'actualizado') {
+                    const statusFinal = result.asistencia || asistencia;
+                    mostrarPantallaExito({ 
+                        nombre: nombre, 
+                        asistencia: statusFinal, 
+                        isDuplicado: result.status === 'duplicado',
+                        isActualizado: result.status === 'actualizado'
+                    });
                 } else {
                     alert('Hubo un error al registrar. Inténtalo de nuevo.');
                     btnEnviar.disabled = false;
@@ -760,17 +654,32 @@
         });
 
         function mostrarPantallaExito(data) {
-            loadingScreen.classList.add('hidden');
             rsvpForm.classList.add('hidden');
             successScreen.classList.remove('hidden');
 
             if (data.asistencia === 'No asisto') {
-                successTitle.textContent = 'Gracias por avisarnos';
-                successMessage.textContent = `${data.nombre}, lamentamos que no nos acompañes. ¡Gracias por tus buenos deseos!`;
+                if (data.isActualizado) {
+                    successTitle.textContent = '¡Respuesta actualizada!';
+                    successMessage.textContent = `${data.nombre}, hemos actualizado tu registro. Ahora has indicado que no podrás asistir.`;
+                } else if (data.isDuplicado) {
+                    successTitle.textContent = '¡Ya habías registrado tu respuesta!';
+                    successMessage.textContent = `${data.nombre}, detectamos que ya habías confirmado previamente que no podrás asistir. ¡Agradecemos tus buenos deseos!`;
+                } else {
+                    successTitle.textContent = 'Gracias por avisarnos';
+                    successMessage.textContent = `${data.nombre}, hemos registrado que lamentablemente no nos acompañarás. ¡Gracias por tus buenos deseos!`;
+                }
                 passSection.classList.add('hidden');
             } else {
-                successTitle.textContent = '¡Ya estás confirmado(a)!';
-                successMessage.textContent = `${data.nombre}, tu asistencia ha quedado registrada correctamente.`;
+                if (data.isActualizado) {
+                    successTitle.textContent = '¡Respuesta actualizada!';
+                    successMessage.textContent = `${data.nombre}, hemos actualizado tu registro. ¡Ahora sí estás confirmado(a)! Aquí tienes tu pase:`;
+                } else if (data.isDuplicado) {
+                    successTitle.textContent = '¡Ya estás registrado(a)!';
+                    successMessage.textContent = `${data.nombre}, detectamos que ya habías confirmado tu asistencia con anterioridad. ¡Aquí tienes tu pase de entrada!:`;
+                } else {
+                    successTitle.textContent = '¡Ya estás confirmado(a)!';
+                    successMessage.textContent = `${data.nombre}, tu registro ha sido validado correctamente.`;
+                }
                 passSection.classList.remove('hidden');
             }
         }
