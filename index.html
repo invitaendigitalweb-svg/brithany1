@@ -550,6 +550,7 @@
                             <p style="font-size: 14px; color: #666;">Verificando estado de invitación...</p>
                         </div>
 
+                        <!-- Formulario de Asistencia -->
                         <form id="asistenciaForm" class="hidden">
                             <div class="form-group">
                                 <label for="asistentes">¿Cuántas personas asistirán? *</label>
@@ -593,12 +594,14 @@
                             </div>
                         </form>
 
+                        <!-- Pantalla de Pase Generado / Bloqueo de Reenvío -->
                         <div id="resultado-pase" class="hidden">
                             <div id="success-title" class="titulo-exito">¡Asistencia Confirmada!</div>
-                            <div id="success-message" class="subtitulo-exito">Guarda tu pase digital en tu celular:</div>
+                            <div id="success-message" class="subtitulo-exito">Ya has confirmado tu asistencia previamente. Guarda tu pase digital:</div>
                             <img id="imgPase" src="" alt="Pase de acceso">
                             <button id="btnDescargar" class="btn btn-success">Descargar Pase</button>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -728,14 +731,14 @@
             setTimeout(updateCountdown, 1000);
         })();
 
-        /* --- SCRIPT DE GOOGLE SHEETS & CONTROL DE DUPLICADOS (80% / LOCALSTORAGE) --- */
+        /* --- SCRIPT DE GOOGLE SHEETS & BLOQUEO POR LOCALSTORAGE --- */
         const scriptURL = 'https://script.google.com/macros/s/AKfycbx9EowmhWaH1e8MjglJmeXDPROZbzjzic2n7kT0nWrs0RWddwlzPcSQunDB-iBGYayx/exec';
 
         const loadingScreen = document.getElementById('loading-screen');
         const asistenciaForm = document.getElementById('asistenciaForm');
         const resultadoPase = document.getElementById('resultado-pase');
 
-        // Verificar localStorage al cargar la página
+        // Verificar localStorage al cargar la página (Bloqueo si ya confirmó antes)
         window.addEventListener('DOMContentLoaded', () => {
             const localConfirmed = localStorage.getItem('invitacion_confirmada_xv');
             if (localConfirmed) {
@@ -820,7 +823,6 @@
                 }
             } catch (error) {
                 console.error('Error:', error);
-                // Si el servidor de google responde con cors opaco pero los datos se guardan:
                 const userData = { nombre: nombrePrincipal, asistencia: asistenciaTexto, asistentesVal: asistentes };
                 localStorage.setItem('invitacion_confirmada_xv', JSON.stringify(userData));
                 mostrarPantallaExito(userData);
@@ -844,7 +846,7 @@
                 btnDescargar.style.display = 'none';
             } else {
                 successTitle.textContent = '¡Asistencia Confirmada!';
-                successMessage.textContent = `${data.nombre}, guarda tu pase digital en tu dispositivo:`;
+                successMessage.textContent = `${data.nombre}, ya has confirmado tu asistencia previamente. Guarda tu pase digital:`;
                 
                 let archivoImagen = (data.asistentesVal === '1') ? 'pase.jpg' : 'pases.jpg';
                 img.src = archivoImagen;
