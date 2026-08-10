@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.cdnfonts.com">
     <link href="https://fonts.cdnfonts.com/css/ss-abigail" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
-
+    
     <style>
         * {
             margin: 0;
@@ -334,11 +334,41 @@
             background-color: #d8959b;
         }
 
-        .pass-container img {
+        .pass-container {
+            position: relative;
+            width: 100%;
             max-width: 100%;
-            border-radius: 10px;
             margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .pass-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        /* Posición baja, debajo de la fecha, en mayúsculas y bien legible */
+        #nombre-pase-overlay {
+            position: absolute;
+            top: 89%;
+            left: 8%;
+            transform: translateY(-50%);
+            width: 84%;
+            font-family: 'SS Abigail', serif;
+            font-size: 15px;
+            color: #8C6A5A;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-align: left;
+            pointer-events: none;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.9);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-transform: uppercase;
         }
 
         .hidden {
@@ -347,7 +377,6 @@
             display: none !important;
         }
 
-        /* Estilo flotante corregido para el botón de música */
         #music-control {
             position: fixed;
             bottom: 20px;
@@ -384,6 +413,7 @@
             .number { font-size: 42px; }
             .label { font-size: 10px; }
             .slider-container { height: 520px; }
+            #nombre-pase-overlay { font-size: 14px; }
         }
     </style>
 </head>
@@ -496,8 +526,12 @@
                         
                         <div class="pass-container" id="pass-section">
                             <p style="font-size: 13px; margin-bottom: 8px;"><strong>Tu Pase de Entrada:</strong></p>
-                            <img src="pase.jpg" alt="Pase de Invitación" id="pase-img">
-                            <button id="btn-descargar" class="btn-rsvp" style="margin-bottom: 10px;">Descargar Pase</button>
+                            <!-- Contenedor visual del pase -->
+                            <div id="captura-pase" style="position: relative; display: inline-block; width: 100%;">
+                                <img src="pase.jpg" alt="Pase de Invitación" id="pase-img">
+                                <div id="nombre-pase-overlay"></div>
+                            </div>
+                            <button id="btn-descargar" class="btn-rsvp" style="margin-top: 15px; margin-bottom: 10px;">Descargar Pase</button>
                         </div>
                     </div>
                 </div>
@@ -610,7 +644,6 @@
             setTimeout(updateCountdown, 1000);
         })();
 
-        // Enlace actualizado de Google Apps Script
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzC--gpPAlnUk43sHlPzqOsLNJ0P1i3Z_z8swBJvXZC3tjdrxuP5svy6XFwDEevFsMS/exec';
 
         const rsvpForm = document.getElementById('rsvp-form');
@@ -621,6 +654,7 @@
         const btnDescargar = document.getElementById('btn-descargar');
         const inputNombre = document.getElementById('nombre');
         const errorNombre = document.getElementById('error-nombre');
+        const nombrePaseOverlay = document.getElementById('nombre-pase-overlay');
 
         function validarNombreCompleto(texto) {
             const palabras = texto.trim().split(/\s+/);
@@ -677,13 +711,15 @@
                 console.error('Error:', error);
                 alert('Error de conexión con el servidor.');
                 btnEnviar.disabled = false;
-                btnEnviar.textContent = 'Enviar Confirmación';
+                btnEnviar.textContent = 'Enviar respuesta';
             }
         });
 
         function mostrarPantallaExito(data) {
             rsvpForm.classList.add('hidden');
             successScreen.classList.remove('hidden');
+
+            nombrePaseOverlay.textContent = data.nombre.toUpperCase();
 
             if (data.asistencia === 'No asisto') {
                 if (data.isActualizado) {
@@ -712,35 +748,63 @@
             }
         }
 
-        btnDescargar.addEventListener('click', async () => {
-            const imagePath = 'pase.jpg';
+        // Descarga optimizada utilizando Canvas Nativo HTML5
+        btnDescargar.addEventListener('click', () => {
+            btnDescargar.disabled = true;
+            btnDescargar.textContent = 'Generando pase...';
+
+            const imgPase = document.getElementById('pase-img');
+            const nombreText = document.getElementById('nombre-pase-overlay').textContent;
+
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = imgPase.naturalWidth;
+            canvas.height = imgPase.naturalHeight;
+
+            // 1. Dibujar imagen base
+            ctx.drawImage(imgPase, 0, 0, canvas.width, canvas.height);
+
+            // 2. Estilos tipográficos proporcionales
+            const fontSize = canvas.width * 0.045;
+            ctx.font = `bold ${fontSize}px 'SS Abigail', serif`;
+            ctx.fillStyle = '#8C6A5A';
+            ctx.textBaseline = 'middle';
+
+            // Sombra para mejor lectura
+            ctx.shadowColor = 'rgba(255,255,255,0.9)';
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 2;
+            ctx.shadowBlur = 4;
+
+            // 3. Posicionamiento dinámico (89% top, 8% left)
+            const posX = canvas.width * 0.08;
+            const posY = canvas.height * 0.89;
+
+            // 4. Pintar texto en mayúsculas
+            ctx.fillText(nombreText.toUpperCase(), posX, posY);
+
             try {
-                const response = await fetch(imagePath);
-                const blob = await response.blob();
-                
-                if (navigator.canShare && navigator.canShare({ files: [new File([blob], 'pase.jpg', { type: blob.type })] })) {
-                    const file = new File([blob], 'pase_invitacion.jpg', { type: blob.type });
-                    await navigator.share({
-                        title: 'Tu Pase de Invitación',
-                        text: 'Aquí tienes tu pase de acceso.',
-                        files: [file]
-                    });
-                } else {
-                    const blobUrl = window.URL.createObjectURL(blob);
+                canvas.toBlob((blob) => {
+                    if (!blob) throw new Error("No se pudo crear la imagen");
+
+                    const url = window.URL.createObjectURL(blob);
                     const a = document.createElement('a');
-                    a.href = blobUrl;
-                    a.download = 'pase_invitacion.jpg';
+                    a.href = url;
+                    a.download = `Pase_${nombreText.replace(/\s+/g, '_')}.jpg`;
                     document.body.appendChild(a);
                     a.click();
                     document.body.removeChild(a);
-                    window.URL.revokeObjectURL(blobUrl);
-                }
-            } catch (err) {
-                const a = document.createElement('a');
-                a.href = imagePath;
-                a.download = 'pase_invitacion.jpg';
-                a.target = '_blank';
-                a.click();
+                    window.URL.revokeObjectURL(url);
+
+                    btnDescargar.disabled = false;
+                    btnDescargar.textContent = 'Descargar Pase';
+                }, 'image/jpeg', 0.95);
+                
+            } catch (error) {
+                console.error("Bloqueo de seguridad local CORS:", error);
+                alert("⚠️ NAVEGADOR BLOQUEÓ LA DESCARGA LOCAL\n\nEstás abriendo la página directamente con doble clic (file:///...). Usa 'Live Server' en VS Code o súbelo a internet para probar la descarga.");
+                btnDescargar.disabled = false;
+                btnDescargar.textContent = 'Descargar Pase';
             }
         });
     </script>
