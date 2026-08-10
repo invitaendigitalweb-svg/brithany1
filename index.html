@@ -10,7 +10,7 @@
     <meta property="og:description" content="Te invito a celebrar este momento tan especial conmigo. Haz click para abrir tu invitación.">
     <meta property="og:image" content="portada.jpg">
     <meta property="og:url" content="">
-    <meta property="og:type" content="https://invitaendigitalweb-svg.github.io/xvbrithany">
+    <meta property="og:type" content="website">
 
     <link rel="preconnect" href="https://fonts.cdnfonts.com">
     <link href="https://fonts.cdnfonts.com/css/ss-abigail" rel="stylesheet">
@@ -116,7 +116,7 @@
             transform: translateY(0);
         }
 
-        /* Animación padrisima especial (Flip 3D con destello) para la sección de Asistencia */
+        /* Animación especial para la sección de Asistencia */
         .animate-flip-special {
             opacity: 0;
             transform: perspective(1000px) rotateX(25deg) scale(0.85);
@@ -176,7 +176,7 @@
         }
 
         /* Sección de Ceremonia y Ubicación */
-        .location-section {
+        .location-section, .reception-section {
             width: 100%;
             background-color: #F9EEEB;
             display: flex;
@@ -185,23 +185,7 @@
             padding: 20px 20px 45px 20px;
         }
 
-        .location-section img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Sección de Recepción */
-        .reception-section {
-            width: 100%;
-            background-color: #F9EEEB;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px 20px 45px 20px;
-        }
-
-        .reception-section img {
+        .location-section img, .reception-section img {
             width: 100%;
             height: auto;
             display: block;
@@ -224,7 +208,7 @@
             display: block;
         }
 
-        /* Sección del Carrusel con altura extendida */
+        /* Sección del Carrusel */
         .gallery-section {
             width: 100%;
             background-color: #f9f6f0;
@@ -264,24 +248,24 @@
             display: inline-block;
             margin-top: 20px;
             padding: 12px 28px;
-            background-color: #E5A6AC;
+            background-color: #E07C8A;
             color: #ffffff;
-            font-family: 'SS Abigail', serif;
+            font-family: 'Cinzel', serif;
             font-size: 13px;
             font-weight: 700;
             letter-spacing: 2px;
             text-decoration: none;
             border-radius: 30px;
-            box-shadow: 0 4px 10px rgba(229, 166, 172, 0.3);
+            box-shadow: 0 4px 10px rgba(224, 124, 138, 0.3);
             transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
         .location-btn:hover {
             transform: scale(1.05);
-            background-color: #d8959b;
+            background-color: #c96b77;
         }
 
-        /* Estilos integrados para el Formulario de Asistencia con fondo #F9EEEB */
+        /* Estilos para el Formulario de Asistencia con fondo #F9EEEB */
         .rsvp-container-wrapper {
             width: 100%;
             background-color: #F9EEEB;
@@ -300,6 +284,7 @@
 
         .form-group {
             margin-bottom: 22px;
+            text-align: left;
         }
 
         .rsvp-inner label {
@@ -329,8 +314,8 @@
         .rsvp-inner input[type="text"]:focus, 
         .rsvp-inner textarea:focus {
             outline: none;
-            border-color: #E5A6AC;
-            box-shadow: 0 0 0 3px rgba(229, 166, 172, 0.2);
+            border-color: #E07C8A;
+            box-shadow: 0 0 0 3px rgba(224, 124, 138, 0.2);
         }
 
         .rsvp-inner textarea {
@@ -338,8 +323,8 @@
             height: 90px;
         }
 
-        .rsvp-inner .btn {
-            background-color: #E5A6AC;
+        .rsvp-inner .btn, .btn-success {
+            background-color: #E07C8A;
             color: #ffffff;
             padding: 14px;
             border: none;
@@ -347,16 +332,20 @@
             width: 100%;
             font-size: 15px;
             font-family: 'Cinzel', serif;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 1px;
             cursor: pointer;
             transition: background 0.3s ease, transform 0.1s ease;
-            box-shadow: 0 4px 12px rgba(229, 166, 172, 0.4);
+            box-shadow: 0 4px 12px rgba(224, 124, 138, 0.4);
             text-transform: uppercase;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            box-sizing: border-box;
         }
 
-        .rsvp-inner .btn:hover {
-            background-color: #c48b91;
+        .rsvp-inner .btn:hover, .btn-success:hover {
+            background-color: #c96b77;
         }
 
         .rsvp-inner .btn:active {
@@ -364,16 +353,7 @@
         }
 
         .btn-success {
-            background-color: #E5A6AC;
-            text-decoration: none;
-            display: block;
-            text-align: center;
             margin-top: 20px;
-            box-shadow: 0 4px 12px rgba(229, 166, 172, 0.4);
-        }
-
-        .btn-success:hover {
-            background-color: #c48b91;
         }
 
         .hidden { 
@@ -384,10 +364,9 @@
             text-align: center; 
         }
 
-        /* Estilos corregidos y separados para el título de éxito y subtítulo */
         #resultado-pase .titulo-exito {
             font-family: 'Cinzel', serif;
-            color: #c48b91;
+            color: #E07C8A;
             font-size: 20px;
             font-weight: 700;
             margin-bottom: 12px;
@@ -415,6 +394,22 @@
             font-size: 15px;
             color: #4a4a4a;
             line-height: 1.6;
+        }
+
+        /* Pantalla de Carga Inicial / Verificación */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #E07C8A;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Control de Música */
@@ -548,9 +543,16 @@
                 
                 <div class="rsvp-container-wrapper animate-flip-special">
                     <div class="rsvp-inner">
-                        <form id="asistenciaForm">
+                        
+                        <!-- Pantalla de Carga de Verificación LocalStorage -->
+                        <div id="loading-screen" style="text-align: center; padding: 20px;">
+                            <div class="loader"></div>
+                            <p style="font-size: 14px; color: #666;">Verificando estado de invitación...</p>
+                        </div>
+
+                        <form id="asistenciaForm" class="hidden">
                             <div class="form-group">
-                                <label for="asistentes">¿Cuántas personas asistirán?</label>
+                                <label for="asistentes">¿Cuántas personas asistirán? *</label>
                                 <select id="asistentes" name="asistentes" required onchange="cambiarOpciones()">
                                     <option value="" disabled selected>Selecciona una opción</option>
                                     <option value="1">1 Asistente</option>
@@ -561,41 +563,41 @@
 
                             <div id="seccion-1" class="hidden">
                                 <div class="form-group">
-                                    <label for="nombre1">Nombre completo:</label>
+                                    <label for="nombre1">Nombre completo *</label>
                                     <input type="text" id="nombre1" name="nombre1" placeholder="Tu nombre y apellido">
                                 </div>
                             </div>
 
                             <div id="seccion-2" class="hidden">
                                 <div class="form-group">
-                                    <label id="label-nombre-a" for="nombre_a">Nombre del Asistente 1:</label>
+                                    <label id="label-nombre-a" for="nombre_a">Nombre del Asistente 1 *</label>
                                     <input type="text" id="nombre_a" name="nombre_a" placeholder="Nombre completo">
                                 </div>
                                 <div class="form-group">
-                                    <label id="label-nombre-b" for="nombre_b">Nombre del Asistente 2:</label>
+                                    <label id="label-nombre-b" for="nombre_b">Nombre del Asistente 2 *</label>
                                     <input type="text" id="nombre_b" name="nombre_b" placeholder="Nombre completo">
                                 </div>
                             </div>
 
                             <div id="seccion-mensaje" class="hidden">
                                 <div class="form-group">
-                                    <label for="mensaje">Mensaje o felicitación (Opcional):</label>
-                                    <textarea id="mensaje" name="mensaje" placeholder="Escribe unas palabras para los anfitriones..."></textarea>
+                                    <label for="mensaje">Mensaje o felicitación para la festejada (Opcional):</label>
+                                    <textarea id="mensaje" name="mensaje" placeholder="Escribe unas palabras..."></textarea>
                                 </div>
-                                <button type="submit" class="btn">Confirmar Asistencia</button>
+                                <button type="submit" id="btn-enviar" class="btn">Enviar Confirmación</button>
                             </div>
 
                             <div id="seccion-no-asisten" class="hidden">
                                 <p class="mensaje-agradecimiento" style="margin-bottom: 20px;">Lamentamos que no nos puedan acompañar, ¡gracias por avisarnos!</p>
-                                <button type="submit" class="btn">Enviar Respuesta</button>
+                                <button type="submit" id="btn-enviar-no" class="btn">Enviar Respuesta</button>
                             </div>
                         </form>
 
                         <div id="resultado-pase" class="hidden">
-                            <div class="titulo-exito">¡Asistencia Confirmada!</div>
-                            <div class="subtitulo-exito">Guarda tu pase digital en tu celular:</div>
+                            <div id="success-title" class="titulo-exito">¡Asistencia Confirmada!</div>
+                            <div id="success-message" class="subtitulo-exito">Guarda tu pase digital en tu celular:</div>
                             <img id="imgPase" src="" alt="Pase de acceso">
-                            <a id="btnDescargar" class="btn btn-success" download>Descargar Pase</a>
+                            <button id="btnDescargar" class="btn btn-success">Descargar Pase</button>
                         </div>
                     </div>
                 </div>
@@ -695,7 +697,7 @@
             sliderImages[currentSlide].classList.add('active');
         }, 3000);
 
-        /* Cuenta Regresiva actualizada al 22 de Agosto de 2026 a las 3:00 PM (15:00 hrs) */
+        /* Cuenta Regresiva actualizada al 22 de Agosto de 2026 a las 3:00 PM */
         const DATE_TARGET = new Date(2026, 7, 22, 15, 0, 0);
 
         const days = document.getElementById('days');
@@ -726,85 +728,161 @@
             setTimeout(updateCountdown, 1000);
         })();
 
-        /* Script de Envío del Formulario RSVP y Pases Dinámicos */
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbz5-SvzwGrIXS4B_tlXUhS8gfoRIIgEHQaseXsXvPtEbm2EMTB-37Vhpw_xrxZbnMY/exec';
+        /* --- SCRIPT DE GOOGLE SHEETS & CONTROL DE DUPLICADOS (80% / LOCALSTORAGE) --- */
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbx9EowmhWaH1e8MjglJmeXDPROZbzjzic2n7kT0nWrs0RWddwlzPcSQunDB-iBGYayx/exec';
+
+        const loadingScreen = document.getElementById('loading-screen');
+        const asistenciaForm = document.getElementById('asistenciaForm');
+        const resultadoPase = document.getElementById('resultado-pase');
+
+        // Verificar localStorage al cargar la página
+        window.addEventListener('DOMContentLoaded', () => {
+            const localConfirmed = localStorage.getItem('invitacion_confirmada_xv');
+            if (localConfirmed) {
+                mostrarPantallaExito(JSON.parse(localConfirmed));
+            } else {
+                loadingScreen.classList.add('hidden');
+                asistenciaForm.classList.remove('hidden');
+            }
+        });
 
         function cambiarOpciones() {
             const valor = document.getElementById('asistentes').value;
-            const labelA = document.getElementById('label-nombre-a');
-            const labelB = document.getElementById('label-nombre-b');
+            const input1 = document.getElementById('nombre1');
             const inputA = document.getElementById('nombre_a');
             const inputB = document.getElementById('nombre_b');
-            const input1 = document.getElementById('nombre1');
 
             if (valor === '0') {
-                labelA.textContent = 'Nombre del Invitado 1:';
-                labelB.textContent = 'Nombre del Invitado 2:';
-                // Al cambiar a no asisten, limpiamos el campo de 1 persona y habilitamos los 2 inputs de nombres
                 input1.value = '';
             } else {
-                labelA.textContent = 'Nombre del Asistente 1:';
-                labelB.textContent = 'Nombre del Asistente 2:';
-                // Si eligen 1 o 2, limpiamos los campos de la sección 2 por si acaso
                 inputA.value = '';
                 inputB.value = '';
             }
             
-            // Si selecciona 1 asistente, mostramos solo la sección de 1 nombre
             document.getElementById('seccion-1').classList.toggle('hidden', valor !== '1');
-            
-            // Si selecciona 2 asistentes O si selecciona que no podrán asistir (0), mostramos los campos de los dos nombres
             document.getElementById('seccion-2').classList.toggle('hidden', valor !== '2' && valor !== '0');
-            
-            // El campo de mensaje se muestra si elige 1 o 2 asistentes
             document.getElementById('seccion-mensaje').classList.toggle('hidden', valor === '0' || valor === '');
-            
-            // El botón de enviar para cuando no asisten se muestra solo si selecciona '0'
             document.getElementById('seccion-no-asisten').classList.toggle('hidden', valor !== '0');
         }
 
-        document.getElementById('asistenciaForm').addEventListener('submit', e => {
+        asistenciaForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
-            const valor = formData.get('asistentes');
-
-            // Solución para asegurar que los nombres de los invitados (cuando no asisten) se guarden correctamente en Google Sheets:
-            // Si elige '0', mapeamos los valores de nombre_a y nombre_b al campo genérico o aseguramos que el Google Apps Script reciba los datos de 'nombre_a' y 'nombre_b'.
-            // Como el script de Google lee los parámetros por los nombres de los inputs ("nombre_a", "nombre_b", "nombre1"), 
-            // al estar dentro del formulario activo, se envían automáticamente con fetch.
-
-            // Enviamos los datos en segundo plano
-            fetch(scriptURL, { method: 'POST', body: formData })
-                .then(response => console.log('Enviado correctamente'))
-                .catch(error => console.error('Error:', error));
-
-            // Mostramos la pantalla de éxito o agradecimiento
-            form.classList.add('hidden');
             
-            if (valor !== '0') {
-                const img = document.getElementById('imgPase');
-                const btn = document.getElementById('btnDescargar');
-                
-                let archivoImagen = (valor === '1') ? 'pase.jpg' : 'pases.jpg';
-                
-                img.src = archivoImagen;
-                btn.href = archivoImagen;
-                btn.setAttribute('download', archivoImagen);
-                
-                document.getElementById('resultado-pase').classList.remove('hidden');
-            } else {
-                // Pantalla de agradecimiento bonita cuando no asisten sin recargar de golpe
-                const wrapper = document.querySelector('.rsvp-inner');
-                const divGracias = document.createElement('div');
-                divGracias.style.textAlign = 'center';
-                divGracias.innerHTML = `
-                    <div class="titulo-exito" style="margin-bottom: 15px;">¡Gracias por avisarnos!</div>
-                    <p class="mensaje-agradecimiento">Registramos que no podrán acompañarnos. Lamentamos que no estén presentes, ¡les mandamos un saludo!</p>
-                `;
-                wrapper.appendChild(divGracias);
+            const asistentes = document.getElementById('asistentes').value;
+            let nombrePrincipal = '';
+
+            if (asistentes === '1') {
+                nombrePrincipal = document.getElementById('nombre1').value.trim();
+            } else if (asistentes === '2' || asistentes === '0') {
+                const n1 = document.getElementById('nombre_a').value.trim();
+                const n2 = document.getElementById('nombre_b').value.trim();
+                nombrePrincipal = n1 + (n2 ? ' y ' + n2 : '');
+            }
+
+            if (!nombrePrincipal) {
+                alert('Por favor, ingresa el nombre de los asistentes.');
+                return;
+            }
+
+            const asistenciaTexto = (asistentes === '0') ? 'No asiste' : `${asistentes} asistente(s)`;
+            const mensajeTexto = document.getElementById('mensaje') ? document.getElementById('mensaje').value.trim() : '';
+
+            const datos = {
+                nombre: nombrePrincipal,
+                asistencia: asistenciaTexto,
+                mensaje: mensajeTexto
+            };
+
+            const btnActual = asistentes === '0' ? document.getElementById('btn-enviar-no') : document.getElementById('btn-enviar');
+            btnActual.disabled = true;
+            btnActual.textContent = 'Procesando...';
+
+            try {
+                const response = await fetch(scriptURL, {
+                    method: 'POST',
+                    body: JSON.stringify(datos)
+                });
+                const result = await response.json();
+
+                const userData = { nombre: nombrePrincipal, asistencia: asistenciaTexto, asistentesVal: asistentes };
+
+                if (result.status === 'duplicado') {
+                    alert('Atención: ' + result.message);
+                    localStorage.setItem('invitacion_confirmada_xv', JSON.stringify(userData));
+                    mostrarPantallaExito(userData);
+                } else if (result.status === 'success' || result.status === 'ok') {
+                    localStorage.setItem('invitacion_confirmada_xv', JSON.stringify(userData));
+                    mostrarPantallaExito(userData);
+                } else {
+                    alert('Hubo un error al registrar. Inténtalo de nuevo.');
+                    btnActual.disabled = false;
+                    btnActual.textContent = asistentes === '0' ? 'Enviar Respuesta' : 'Enviar Confirmación';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                // Si el servidor de google responde con cors opaco pero los datos se guardan:
+                const userData = { nombre: nombrePrincipal, asistencia: asistenciaTexto, asistentesVal: asistentes };
+                localStorage.setItem('invitacion_confirmada_xv', JSON.stringify(userData));
+                mostrarPantallaExito(userData);
             }
         });
+
+        function mostrarPantallaExito(data) {
+            loadingScreen.classList.add('hidden');
+            asistenciaForm.classList.add('hidden');
+            resultadoPase.classList.remove('hidden');
+
+            const img = document.getElementById('imgPase');
+            const successTitle = document.getElementById('success-title');
+            const successMessage = document.getElementById('success-message');
+            const btnDescargar = document.getElementById('btnDescargar');
+
+            if (data.asistencia === 'No asiste' || data.asistentesVal === '0') {
+                successTitle.textContent = '¡Gracias por avisarnos!';
+                successMessage.textContent = `${data.nombre}, lamentamos que no nos acompañes. ¡Gracias por tus buenos deseos!`;
+                img.style.display = 'none';
+                btnDescargar.style.display = 'none';
+            } else {
+                successTitle.textContent = '¡Asistencia Confirmada!';
+                successMessage.textContent = `${data.nombre}, guarda tu pase digital en tu dispositivo:`;
+                
+                let archivoImagen = (data.asistentesVal === '1') ? 'pase.jpg' : 'pases.jpg';
+                img.src = archivoImagen;
+
+                // Lógica de descarga universal PC y Celulares
+                btnDescargar.onclick = async (e) => {
+                    e.preventDefault();
+                    try {
+                        const response = await fetch(archivoImagen);
+                        const blob = await response.blob();
+                        
+                        if (navigator.canShare && navigator.canShare({ files: [new File([blob], archivoImagen, { type: blob.type })] })) {
+                            const file = new File([blob], archivoImagen, { type: blob.type });
+                            await navigator.share({
+                                title: 'Tu Pase de Invitación',
+                                text: 'Aquí tienes tu pase de acceso.',
+                                files: [file]
+                            });
+                        } else {
+                            const blobUrl = window.URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.href = blobUrl;
+                            a.download = archivoImagen;
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
+                            window.URL.revokeObjectURL(blobUrl);
+                        }
+                    } catch (err) {
+                        const a = document.createElement('a');
+                        a.href = archivoImagen;
+                        a.download = archivoImagen;
+                        a.target = '_blank';
+                        a.click();
+                    }
+                };
+            }
+        }
     </script>
 </body>
 </html>
