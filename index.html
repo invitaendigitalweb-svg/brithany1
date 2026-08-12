@@ -2,30 +2,67 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Mis 15 Años</title>
 
-    <!-- Etiquetas Open Graph -->
-    <meta property="og:title" content="Mis 15 Años">
-    <meta property="og:description" content="Te invito a celebrar este momento tan especial conmigo. Haz click para abrir tu invitación.">
-    <meta property="og:image" content="portada.jpg">
-    <meta property="og:url" content="">
-    <meta property="og:type" content="website">
 
-    <link rel="preconnect" href="https://fonts.cdnfonts.com">
-    <link href="https://fonts.cdnfonts.com/css/ss-abigail" rel="stylesheet">
+    <!-- ==================================================
+         OPEN GRAPH
+    ================================================== -->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta property="og:title"
+          content="Mis 15 Años">
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta property="og:description"
+          content="Te invito a celebrar este momento tan especial conmigo. Haz click para abrir tu invitación.">
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <meta property="og:image"
+          content="portada.jpg">
+
+    <meta property="og:url"
+          content="">
+
+    <meta property="og:type"
+          content="website">
+
+
+    <!-- ==================================================
+         FUENTES
+    ================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.cdnfonts.com">
+
+    <link href="https://fonts.cdnfonts.com/css/ss-abigail"
+          rel="stylesheet">
+
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@400;500&display=swap"
+          rel="stylesheet">
 
 
 <style>
+
+/* ==================================================
+   GENERAL
+================================================== */
 
 * {
     margin: 0;
@@ -33,712 +70,1206 @@
     box-sizing: border-box;
 }
 
-body,
-html {
+html,
+body {
+
     width: 100%;
-    height: 100%;
+    min-height: 100%;
+
     overflow-x: hidden;
+
     background-color: #e8e2d8;
+
     font-family: 'SS Abigail', serif;
 }
 
 
-/* ==========================================
+/* ==================================================
    PANTALLA DE BIENVENIDA
-========================================== */
+================================================== */
 
 #welcome-screen {
+
     position: fixed;
+
     top: 0;
     left: 0;
+
     width: 100%;
     height: 100%;
+
     background-color: #f9f6f0;
+
     display: flex;
+
     justify-content: center;
     align-items: center;
-    z-index: 10;
-    transition: opacity 1s ease, visibility 1s ease;
+
+    z-index: 1000;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+
     cursor: pointer;
 }
 
+
 #welcome-screen img {
+
     width: 100%;
     height: 100%;
+
     object-fit: contain;
+
     object-position: center;
 }
 
 
-/* ==========================================
+/* ==================================================
    INVITACIÓN
-========================================== */
+================================================== */
 
 .invitation-wrapper {
+
     width: 100%;
+
     max-width: 480px;
+
     margin: 0 auto;
+
     background-color: #f9f6f0;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+
+    box-shadow:
+        0 0 25px rgba(0,0,0,.15);
+
     min-height: 100vh;
+
     display: flex;
+
     flex-direction: column;
 }
+
 
 #main-content {
+
     opacity: 0;
+
     visibility: hidden;
-    transition: opacity 1.5s ease;
+
+    transition:
+        opacity 1.5s ease;
+
     width: 100%;
+
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 }
 
+
+/* ==================================================
+   IMÁGENES
+================================================== */
+
 .section-img {
+
     width: 100%;
+
     background-color: #f9f6f0;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     line-height: 0;
+
     font-size: 0;
 }
 
+
 .section-img img {
+
     width: 100%;
+
     height: auto;
+
     display: block;
 }
 
 
-/* ==========================================
+/* ==================================================
    ANIMACIONES
-========================================== */
+================================================== */
 
 .animate-zoom {
+
     opacity: 0;
-    transform: scale(0.95);
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+
+    transform: scale(.95);
+
+    transition:
+        opacity 1.2s ease-out,
+        transform 1.2s ease-out;
 }
 
+
 .animate-zoom.active {
+
     opacity: 1;
+
     transform: scale(1);
 }
 
+
 .animate-float {
+
     opacity: 0;
+
     transform: translateY(40px);
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+
+    transition:
+        opacity 1.2s ease-out,
+        transform 1.2s ease-out;
 }
 
+
 .animate-float.active {
+
     opacity: 1;
+
     transform: translateY(0);
 }
 
+
 .animate-flip-special {
+
     opacity: 0;
-    transform: perspective(1000px) rotateX(25deg) scale(0.85);
+
+    transform:
+        perspective(1000px)
+        rotateX(25deg)
+        scale(.85);
+
     filter: brightness(1.2);
+
     transition:
-        opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 1.4s cubic-bezier(.16,1,.3,1),
+        transform 1.4s cubic-bezier(.16,1,.3,1),
         filter 1.4s ease;
 }
 
+
 .animate-flip-special.active {
+
     opacity: 1;
-    transform: perspective(1000px) rotateX(0deg) scale(1);
+
+    transform:
+        perspective(1000px)
+        rotateX(0deg)
+        scale(1);
+
     filter: brightness(1);
 }
 
 
-/* ==========================================
+/* ==================================================
    CUENTA REGRESIVA
-========================================== */
+================================================== */
 
 .countdown-section {
+
     width: 100%;
-    padding: 40px 20px 30px 20px;
+
+    padding:
+        40px
+        20px
+        30px;
+
     display: flex;
+
     justify-content: center;
     align-items: center;
+
     background-color: #ffffff;
 }
 
+
 .countdown {
+
     display: flex;
+
     gap: 35px;
+
     align-items: flex-end;
+
     justify-content: center;
 }
 
+
 .block {
+
     text-align: center;
+
     position: relative;
 }
 
+
 .number {
+
     font-size: 50px;
+
     color: #BB9885;
+
     line-height: 1;
+
     letter-spacing: 2px;
-    text-shadow: 0 2px 8px rgba(187, 152, 133, 0.25);
+
+    text-shadow:
+        0 2px 8px
+        rgba(187,152,133,.25);
 }
+
 
 .block::after {
+
     content: "";
+
     display: block;
+
     width: 32px;
+
     height: 1px;
-    background: rgba(187, 152, 133, 0.4);
-    margin: 8px auto 6px;
+
+    background:
+        rgba(187,152,133,.4);
+
+    margin:
+        8px auto 6px;
 }
 
+
 .label {
+
     font-size: 11px;
+
     letter-spacing: 3px;
+
     color: #A37E6B;
 }
 
 
-/* ==========================================
+/* ==================================================
    CEREMONIA
-========================================== */
+================================================== */
 
 .location-section {
+
     width: 100%;
+
     background-color: #F9EEEB;
+
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
-    padding: 20px 20px 45px 20px;
+
+    padding:
+        20px
+        20px
+        45px;
 }
+
 
 .location-section img {
+
     width: 100%;
+
     height: auto;
+
     display: block;
 }
 
 
-/* ==========================================
+/* ==================================================
    RECEPCIÓN
-========================================== */
+================================================== */
 
 .reception-section {
+
     width: 100%;
+
     background-color: #F9EEEB;
+
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
-    padding: 20px 20px 45px 20px;
+
+    padding:
+        20px
+        20px
+        45px;
 }
 
+
 .reception-section img {
+
     width: 100%;
+
     height: auto;
+
     display: block;
 }
 
 
-/* ==========================================
+/* ==================================================
    BOTONES UBICACIÓN
-========================================== */
+================================================== */
 
 .location-btn {
+
     display: inline-block;
+
     margin-top: 20px;
-    padding: 12px 28px;
+
+    padding:
+        12px
+        28px;
+
     background-color: #E5A6AC;
+
     color: #ffffff;
-    font-family: 'SS Abigail', serif;
+
+    font-family:
+        'SS Abigail',
+        serif;
+
     font-size: 13px;
+
     font-weight: 700;
+
     letter-spacing: 2px;
+
     text-decoration: none;
+
     border-radius: 30px;
-    box-shadow: 0 4px 10px rgba(229, 166, 172, 0.3);
-    transition: transform 0.3s ease, background-color 0.3s ease;
+
+    box-shadow:
+        0 4px 10px
+        rgba(229,166,172,.3);
+
+    transition:
+        transform .3s ease,
+        background-color .3s ease;
 }
 
+
 .location-btn:hover {
+
     transform: scale(1.05);
+
     background-color: #d8959b;
 }
 
 
-/* ==========================================
+/* ==================================================
    GALERÍA
-========================================== */
+================================================== */
 
 .gallery-title-section {
+
     width: 100%;
+
     background-color: #f9f6f0;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     line-height: 0;
+
     font-size: 0;
 }
 
+
 .gallery-title-section img {
+
     width: 100%;
+
     height: auto;
+
     display: block;
 }
 
+
 .gallery-section {
+
     width: 100%;
+
     background-color: #f9f6f0;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     line-height: 0;
+
     font-size: 0;
+
     padding: 0;
+
     margin: 0;
 }
 
+
 .slider-container {
+
     position: relative;
+
     width: 100%;
+
     height: 600px;
+
     overflow: hidden;
+
     background: #f9f6f0;
 }
 
+
 .slider-container img {
+
     position: absolute;
+
     inset: 0;
+
     width: 100%;
+
     height: 100%;
+
     object-fit: cover;
+
     opacity: 0;
-    transition: opacity 1.2s ease-in-out;
+
+    transition:
+        opacity 1.2s ease-in-out;
 }
 
+
 .slider-container img.active {
+
     opacity: 1;
 }
 
 
-/* ======================================================
-   FORMULARIO DE ASISTENCIA
-   ESTILO ORIGINAL DEL SEGUNDO CÓDIGO
-====================================================== */
+/* ==================================================
+   RSVP
+================================================== */
 
 .rsvp-integrado {
-    width: 100%;
-    background-color: #F9EEEB;
-    padding: 35px 15px 45px 15px;
 
-    /* ESPACIO EXTRA PARA EVITAR EMPALMES */
+    width: 100%;
+
+    background-color: #F9EEEB;
+
+    padding:
+        35px
+        15px
+        45px;
+
     line-height: 1.5;
 }
+
 
 .rsvp-integrado *,
 .rsvp-integrado *::before,
 .rsvp-integrado *::after {
+
     box-sizing: border-box;
 }
 
+
 .rsvp-integrado .contenedor {
+
     width: 100%;
+
     max-width: 520px;
+
     margin: 0 auto;
 }
 
+
 .rsvp-integrado .tarjeta {
-    background: rgba(255,255,255,.94);
-    border: 1px solid #d5ad65;
+
+    background:
+        rgba(255,255,255,.94);
+
+    border:
+        1px solid #d5ad65;
+
     border-radius: 25px;
-    padding: 35px 28px;
-    box-shadow: 0 15px 45px rgba(128,72,89,.15);
+
+    padding:
+        35px
+        28px;
+
+    box-shadow:
+        0 15px 45px
+        rgba(128,72,89,.15);
 }
 
 
-/* TITULO */
+/* ==================================================
+   TÍTULO
+================================================== */
 
 .rsvp-integrado .titulo {
+
     text-align: center;
-    font-family: 'Cormorant Garamond', serif;
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
     font-size: 42px;
+
     color: #a77b2f;
-    margin: 0 0 8px;
+
+    margin:
+        0 0 8px;
 }
 
+
 .rsvp-integrado .subtitulo {
+
     text-align: center;
+
     font-size: 13px;
+
     color: #80616a;
+
     margin-bottom: 30px;
+
     line-height: 1.7;
 }
 
+
 .rsvp-integrado .separador {
+
     width: 70px;
+
     height: 1px;
+
     background: #caa35b;
-    margin: 12px auto 28px;
+
+    margin:
+        12px auto 28px;
 }
 
 
-/* CAMPOS */
+/* ==================================================
+   CAMPOS
+================================================== */
 
 .rsvp-integrado .grupo {
+
     margin-bottom: 28px;
 }
 
+
 .rsvp-integrado .etiqueta {
+
     display: block;
-    font-family: 'Cormorant Garamond', serif;
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
     font-size: 22px;
+
     color: #9c6d28;
+
     margin-bottom: 12px;
+
     line-height: 1.4;
 }
+
 
 .rsvp-integrado input[type="text"] {
+
     width: 100%;
-    padding: 14px 15px;
+
+    padding:
+        14px
+        15px;
+
     border-radius: 12px;
-    border: 1px solid #e0bdc7;
+
+    border:
+        1px solid #e0bdc7;
+
     background: #fffafb;
+
     outline: none;
-    font-family: 'Montserrat', sans-serif;
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
     color: #5d424a;
+
     font-size: 14px;
+
     line-height: 1.4;
 }
 
 
-/* OPCIONES */
+/* ==================================================
+   OPCIONES
+================================================== */
 
 .rsvp-integrado .opciones {
+
     display: flex;
+
     gap: 12px;
 }
 
+
 .rsvp-integrado .opcion {
+
     flex: 1;
 }
 
+
 .rsvp-integrado .opcion input {
+
     display: none;
 }
 
+
 .rsvp-integrado .opcion label {
+
     display: block;
+
     text-align: center;
-    padding: 13px 8px;
-    border: 1px solid #e0bdc7;
+
+    padding:
+        13px
+        8px;
+
+    border:
+        1px solid #e0bdc7;
+
     border-radius: 12px;
+
     cursor: pointer;
+
     font-size: 13px;
+
     background: #fffafb;
+
     transition: .2s;
+
     line-height: 1.5;
 }
 
+
 .rsvp-integrado .opcion input:checked + label {
+
     background: #f2d5dc;
+
     border-color: #bd8d3e;
+
     color: #815d20;
+
     font-weight: 600;
 }
 
 
-/* BOTÓN ENVIAR */
+/* ==================================================
+   BOTÓN
+================================================== */
 
 .rsvp-integrado .boton {
+
     width: 100%;
+
     border: 0;
+
     border-radius: 30px;
+
     padding: 16px;
-    background: linear-gradient(
-        135deg,
-        #c49a4d,
-        #e0bd70,
-        #b98536
-    );
+
+    background:
+        linear-gradient(
+            135deg,
+            #c49a4d,
+            #e0bd70,
+            #b98536
+        );
+
     color: white;
-    font-family: 'Montserrat', sans-serif;
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
     font-size: 14px;
+
     font-weight: 600;
+
     cursor: pointer;
+
     line-height: 1.4;
 }
 
+
 .rsvp-integrado .boton:disabled {
+
     opacity: .6;
+
     cursor: not-allowed;
 }
 
 
-/* MENSAJE */
+/* ==================================================
+   MENSAJE
+================================================== */
 
 .rsvp-integrado .mensaje {
+
     display: none;
+
     text-align: center;
+
     margin-top: 25px;
+
     padding: 18px;
+
     border-radius: 15px;
+
     background: #fff6f8;
-    border: 1px solid #e5c3ca;
+
+    border:
+        1px solid #e5c3ca;
+
     line-height: 1.8;
+
     font-size: 14px;
 }
 
+
 .rsvp-integrado .mensaje.visible {
+
     display: block;
 }
 
 
-/* PASE */
+/* ==================================================
+   PASE
+================================================== */
 
 .rsvp-integrado .pase {
+
     display: none;
+
     margin-top: 30px;
 }
 
+
 .rsvp-integrado .pase.visible {
+
     display: block;
 }
 
-
-/* CONTENIDO DEL PASE */
 
 .rsvp-integrado #contenidoPase {
+
     position: relative;
+
     width: 100%;
-    padding: 42px 25px;
+
+    padding:
+        42px
+        25px;
+
     text-align: center;
-    border: 2px solid #c9a154;
+
+    border:
+        2px solid #c9a154;
+
     border-radius: 24px;
-    background: linear-gradient(
-        145deg,
-        #fffdfd,
-        #fff7f9,
-        #fdf0f3
-    );
-    box-shadow: 0 10px 30px rgba(128,72,89,.12);
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffdfd,
+            #fff7f9,
+            #fdf0f3
+        );
+
+    box-shadow:
+        0 10px 30px
+        rgba(128,72,89,.12);
 }
 
 
-/* DECORACIÓN */
-
 .rsvp-integrado #contenidoPase::before {
+
     content: "✦";
+
     display: block;
+
     font-size: 18px;
+
     color: #c9a154;
+
     margin-bottom: 8px;
 }
 
 
-/* TITULO DEL PASE */
-
 .rsvp-integrado .pase-titulo {
-    font-family: 'Cormorant Garamond', serif;
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
     color: #a77b2f;
+
     font-size: 38px;
+
     font-weight: 600;
-    margin: 0 0 18px;
+
+    margin:
+        0 0 18px;
+
     line-height: 1.3;
 }
 
 
-/* NOMBRE */
-
 .rsvp-integrado .pase-nombre {
-    font-family: 'Cormorant Garamond', serif;
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
     font-size: 28px;
+
     font-weight: 500;
+
     color: #66434d;
-    margin: 18px 0 25px;
+
+    margin:
+        18px 0 25px;
+
     line-height: 1.4;
+
     word-break: break-word;
 }
 
 
-/* LÍNEA */
-
 .rsvp-integrado .pase-linea {
+
     width: 90px;
+
     height: 1px;
+
     background: #d4b477;
-    margin: 0 auto 22px;
+
+    margin:
+        0 auto 22px;
 }
 
 
-/* CÓDIGO */
-
 .rsvp-integrado .codigo {
+
     display: inline-block;
+
     font-size: 27px;
+
     font-weight: 600;
+
     letter-spacing: 7px;
+
     color: #9c6d28;
-    padding: 10px 18px;
-    border-top: 1px solid #d4b477;
-    border-bottom: 1px solid #d4b477;
+
+    padding:
+        10px
+        18px;
+
+    border-top:
+        1px solid #d4b477;
+
+    border-bottom:
+        1px solid #d4b477;
+
     line-height: 1.4;
 }
 
 
-/* TEXTO DEL CÓDIGO */
-
 .rsvp-integrado .codigo-texto {
+
     margin-top: 12px;
+
     font-size: 10px;
+
     letter-spacing: 2px;
+
     text-transform: uppercase;
+
     color: #9b7c83;
+
     line-height: 1.6;
 }
 
 
-/* BOTÓN DESCARGAR */
-
 .rsvp-integrado .boton-descargar {
+
     width: 100%;
-    border: 1px solid #d8aab7;
+
+    border:
+        1px solid #d8aab7;
+
     border-radius: 30px;
-    padding: 14px 20px;
+
+    padding:
+        14px
+        20px;
+
     margin-top: 18px;
-    background: linear-gradient(
-        135deg,
-        #e9b9c5,
-        #f2cbd3,
-        #dfabb9
-    );
+
+    background:
+        linear-gradient(
+            135deg,
+            #e9b9c5,
+            #f2cbd3,
+            #dfabb9
+        );
+
     color: #6f4b55;
-    font-family: 'Montserrat', sans-serif;
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
     font-size: 13px;
+
     font-weight: 600;
+
     cursor: pointer;
+
     line-height: 1.5;
-    box-shadow: 0 5px 15px rgba(170,105,120,.15);
-    transition: all .2s ease;
+
+    box-shadow:
+        0 5px 15px
+        rgba(170,105,120,.15);
+
+    transition:
+        all .2s ease;
 }
+
 
 .rsvp-integrado .boton-descargar:hover {
+
     transform: translateY(-1px);
-    box-shadow: 0 7px 18px rgba(170,105,120,.22);
+
+    box-shadow:
+        0 7px 18px
+        rgba(170,105,120,.22);
 }
 
+
 .rsvp-integrado .boton-descargar:disabled {
+
     opacity: .6;
+
     cursor: not-allowed;
 }
 
 
-/* ==========================================
+/* ==================================================
    MÚSICA
-========================================== */
+================================================== */
 
 #music-control {
+
     position: fixed;
+
     bottom: 25px;
+
     right: 25px;
+
     width: 55px;
+
     height: 55px;
+
     background-color: #ffd1dc;
+
     border-radius: 50%;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+    box-shadow:
+        0 4px 10px
+        rgba(0,0,0,.2);
+
     cursor: pointer;
+
     z-index: 100;
-    border: 2px solid #ffffff;
-    transition: transform 0.3s ease;
+
+    border:
+        2px solid #ffffff;
+
+    transition:
+        transform .3s ease;
 }
 
+
 #music-control:hover {
+
     transform: scale(1.1);
 }
 
+
 #music-control svg {
+
     width: 24px;
+
     height: 24px;
+
     fill: #555555;
 }
 
+
 .hidden {
+
     opacity: 0;
+
     visibility: hidden;
+
     display: none;
 }
 
 
-/* ==========================================
-   MOVIL
-========================================== */
+/* ==================================================
+   MÓVIL
+================================================== */
 
-@media(max-width: 480px) {
+@media(max-width:480px) {
 
     .invitation-wrapper {
+
         max-width: 100%;
+
         box-shadow: none;
     }
 
+
     .countdown {
+
         gap: 20px;
     }
 
+
     .number {
+
         font-size: 42px;
     }
 
+
     .label {
+
         font-size: 10px;
     }
 
+
     .slider-container {
+
         height: 520px;
     }
 
+
     .rsvp-integrado {
-        padding: 30px 12px 40px;
+
+        padding:
+            30px
+            12px
+            40px;
     }
+
 
     .rsvp-integrado .tarjeta {
-        padding: 30px 20px;
+
+        padding:
+            30px
+            20px;
     }
 
+
     .rsvp-integrado .titulo {
+
         font-size: 38px;
     }
 
+
     .rsvp-integrado #contenidoPase {
-        padding: 35px 18px;
+
+        padding:
+            35px
+            18px;
     }
 
+
     .rsvp-integrado .pase-titulo {
+
         font-size: 34px;
     }
 
+
     .rsvp-integrado .pase-nombre {
+
         font-size: 25px;
     }
 
+
     .rsvp-integrado .codigo {
+
         font-size: 23px;
+
         letter-spacing: 5px;
     }
 
+
     .rsvp-integrado .opciones {
+
         gap: 8px;
     }
 
+
     .rsvp-integrado .opcion label {
-        padding: 13px 5px;
+
+        padding:
+            13px
+            5px;
+
         font-size: 12px;
     }
+
 }
 
 </style>
@@ -749,275 +1280,334 @@ html {
 <body>
 
 
-<!-- PANTALLA DE BIENVENIDA -->
+<!-- ==================================================
+     BIENVENIDA
+================================================== -->
 
-<div id="welcome-screen" title="Haz clic para abrir">
-    <img src="foto.jpg" alt="Sobre de invitación">
+<div id="welcome-screen"
+     title="Haz clic para abrir">
+
+    <img src="foto.jpg"
+         alt="Sobre de invitación">
+
 </div>
 
 
-<!-- CONTENEDOR GENERAL -->
+<!-- ==================================================
+     INVITACIÓN
+================================================== -->
 
 <div class="invitation-wrapper">
 
-    <div id="main-content">
+<div id="main-content">
 
 
-        <!-- 1. PORTADA -->
+<!-- ==================================================
+     1. PORTADA
+================================================== -->
 
-        <section class="section-img">
-            <img src="portada.jpg" alt="Portada de la invitación de Mis 15 Años">
-        </section>
+<section class="section-img">
 
+    <img src="portada.jpg"
+         alt="Portada de la invitación de Mis 15 Años">
 
-        <!-- 2. FRASE -->
-
-        <section class="section-img">
-            <img src="frase.jpg" alt="Frase de Mis 15 Años" class="animate-zoom">
-        </section>
+</section>
 
 
-        <!-- 3. FECHA -->
+<!-- ==================================================
+     2. FRASE
+================================================== -->
 
-        <section class="section-img">
-            <img src="fecha.jpg" alt="Fecha de Mis 15 Años" class="animate-zoom">
-        </section>
+<section class="section-img">
+
+    <img src="frase.jpg"
+         alt="Frase de Mis 15 Años"
+         class="animate-zoom">
+
+</section>
 
 
-        <!-- 4. CUENTA REGRESIVA -->
+<!-- ==================================================
+     3. FECHA
+================================================== -->
 
-        <section class="countdown-section">
+<section class="section-img">
 
-            <div class="countdown">
+    <img src="fecha.jpg"
+         alt="Fecha de Mis 15 Años"
+         class="animate-zoom">
 
-                <div class="block">
-                    <div id="days" class="number">0</div>
-                    <div class="label">DÍAS</div>
-                </div>
+</section>
 
-                <div class="block">
-                    <div id="hours" class="number">00</div>
-                    <div class="label">HORAS</div>
-                </div>
 
-                <div class="block">
-                    <div id="minutes" class="number">00</div>
-                    <div class="label">MINUTOS</div>
-                </div>
+<!-- ==================================================
+     4. CUENTA REGRESIVA
+================================================== -->
 
-                <div class="block">
-                    <div id="seconds" class="number">00</div>
-                    <div class="label">SEGUNDOS</div>
-                </div>
+<section class="countdown-section">
 
+    <div class="countdown">
+
+        <div class="block">
+
+            <div id="days"
+                 class="number">0</div>
+
+            <div class="label">
+                DÍAS
             </div>
 
-        </section>
+        </div>
 
 
-        <!-- 5. CEREMONIA -->
+        <div class="block">
 
-        <section class="location-section">
+            <div id="hours"
+                 class="number">00</div>
 
-            <img src="ceremonia.jpg"
-                 alt="Detalles de ceremonia"
-                 class="animate-zoom">
-
-            <a href="https://www.google.com/maps/place/Parroquia+del+Sagrado+Coraz%C3%B3n+de+Jes%C3%BAs/@28.6262123,-106.0734464,859m/data=!3m2!1e3!4b1!4m6!3m5!1s0x86ea5caebcfb39a9:0x7142c0ef10e82b9b!8m2!3d28.6262123!4d-106.0711241!16s%2Fg%2F1tgdcw5w!18m1!1e1"
-               target="_blank"
-               class="location-btn">
-                VER UBICACIÓN
-            </a>
-
-        </section>
-
-
-        <!-- 6. RECEPCIÓN -->
-
-        <section class="reception-section">
-
-            <img src="recepcion.jpg"
-                 alt="Detalles de recepción"
-                 class="animate-zoom">
-
-            <a href="https://www.google.com/maps/place/Quinta+kiri,+C.+Guadalupe+Posadas,+11+de+Febrero+Sur,+31066+Chihuahua,+Chih./data=!4m2!3m1!1s0x86ea5bac27293f75:0x64a47b49dd5ce364"
-               target="_blank"
-               class="location-btn">
-                VER UBICACIÓN
-            </a>
-
-        </section>
-
-
-        <!-- 7. TÍTULO GALERÍA -->
-
-        <section class="gallery-title-section">
-
-            <img src="galeria.jpg"
-                 alt="Galería de Mis 15 Años"
-                 class="animate-zoom">
-
-        </section>
-
-
-        <!-- 8. CARRUSEL -->
-
-        <section class="gallery-section">
-
-            <div class="slider-container animate-zoom">
-
-                <img src="https://i.imgur.com/MSYBfYT.jpeg"
-                     class="active"
-                     alt="Foto 1">
-
-                <img src="https://i.imgur.com/OwS4Q50.png"
-                     alt="Foto 2">
-
-                <img src="https://i.imgur.com/L67IlOh.jpeg"
-                     alt="Foto 3">
-
+            <div class="label">
+                HORAS
             </div>
 
-        </section>
+        </div>
 
 
-        <!-- 9. VESTIMENTA -->
+        <div class="block">
 
-        <section class="section-img">
+            <div id="minutes"
+                 class="number">00</div>
 
-            <img src="vestimenta.jpg"
-                 alt="Código de vestimenta"
-                 class="animate-float">
+            <div class="label">
+                MINUTOS
+            </div>
 
-        </section>
-
-
-        <!-- 10. REGALO -->
-
-        <section class="section-img">
-
-            <img src="regalo.jpg"
-                 alt="Sugerencia de regalo"
-                 class="animate-float">
-
-        </section>
+        </div>
 
 
-        <!-- ==================================================
-             11. ASISTENCIA NUEVA
-        =================================================== -->
+        <div class="block">
 
-        <section class="section-img"
-                 style="flex-direction: column;">
+            <div id="seconds"
+                 class="number">00</div>
 
-            <img src="asistencia.jpg"
-                 alt="Confirmar asistencia"
-                 class="animate-flip-special"
-                 style="margin-bottom: 0;">
+            <div class="label">
+                SEGUNDOS
+            </div>
 
+        </div>
 
-            <div class="rsvp-integrado animate-flip-special">
+    </div>
 
-                <div class="contenedor">
-
-                    <div class="tarjeta">
+</section>
 
 
-                        <h1 class="titulo">
-                        </h1>
+<!-- ==================================================
+     5. CEREMONIA
+================================================== -->
+
+<section class="location-section">
+
+    <img src="ceremonia.jpg"
+         alt="Detalles de ceremonia"
+         class="animate-zoom">
 
 
-                        <div class="subtitulo">
-                            Agradecemos confirmar su asistencia
-                        </div>
+    <a href="https://www.google.com/maps/place/Parroquia+del+Sagrado+Coraz%C3%B3n+de+Jes%C3%BAs/@28.6262123,-106.0734464,859m/data=!3m2!1e3!4b1!4m6!3m5!1s0x86ea5caebcfb39a9:0x7142c0ef10e82b9b!8m2!3d28.6262123!4d-106.0711241!16s%2Fg%2F1tgdcw5w!18m1!1e1"
+       target="_blank"
+       class="location-btn">
+
+        VER UBICACIÓN
+
+    </a>
+
+</section>
 
 
-                        <div class="separador"></div>
+<!-- ==================================================
+     6. RECEPCIÓN
+================================================== -->
+
+<section class="reception-section">
+
+    <img src="recepcion.jpg"
+         alt="Detalles de recepción"
+         class="animate-zoom">
 
 
-                        <div class="grupo">
+    <a href="https://www.google.com/maps/place/Quinta+kiri,+C.+Guadalupe+Posadas,+11+de+Febrero+Sur,+31066+Chihuahua,+Chih./data=!4m2!3m1!1s0x86ea5bac27293f75:0x64a47b49dd5ce364"
+       target="_blank"
+       class="location-btn">
 
-                            <label class="etiqueta">
-                                Nombre completo
-                            </label>
+        VER UBICACIÓN
+
+    </a>
+
+</section>
+
+
+<!-- ==================================================
+     7. TÍTULO GALERÍA
+================================================== -->
+
+<section class="gallery-title-section">
+
+    <img src="galeria.jpg"
+         alt="Galería de Mis 15 Años"
+         class="animate-zoom">
+
+</section>
+
+
+<!-- ==================================================
+     8. GALERÍA
+================================================== -->
+
+<section class="gallery-section">
+
+    <div class="slider-container animate-zoom">
+
+        <img src="https://i.imgur.com/MSYBfYT.jpeg"
+             class="active"
+             alt="Foto 1">
+
+        <img src="https://i.imgur.com/OwS4Q50.png"
+             alt="Foto 2">
+
+        <img src="https://i.imgur.com/L67IlOh.jpeg"
+             alt="Foto 3">
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     9. VESTIMENTA
+================================================== -->
+
+<section class="section-img">
+
+    <img src="vestimenta.jpg"
+         alt="Código de vestimenta"
+         class="animate-float">
+
+</section>
+
+
+<!-- ==================================================
+     10. REGALO
+================================================== -->
+
+<section class="section-img">
+
+    <img src="regalo.jpg"
+         alt="Sugerencia de regalo"
+         class="animate-float">
+
+</section>
+
+
+<!-- ==================================================
+     11. ASISTENCIA
+================================================== -->
+
+<section class="section-img"
+         style="flex-direction:column;">
+
+
+    <img src="asistencia.jpg"
+         alt="Confirmar asistencia"
+         class="animate-flip-special"
+         style="margin-bottom:0;">
+
+
+    <div class="rsvp-integrado animate-flip-special">
+
+
+        <div class="contenedor">
+
+
+            <div class="tarjeta">
+
+
+                <h1 class="titulo"></h1>
+
+
+                <div class="subtitulo">
+
+                    Agradecemos confirmar su asistencia
+
+                </div>
+
+
+                <div class="separador"></div>
+
+
+                <div class="grupo">
+
+
+                    <label class="etiqueta">
+
+                        Nombre completo
+
+                    </label>
+
+
+                    <input
+                        id="nombre"
+                        type="text"
+                        placeholder="Nombre y dos apellidos"
+                        autocomplete="name"
+                    >
+
+                </div>
+
+
+                <div class="grupo">
+
+
+                    <label class="etiqueta">
+
+                        Asistencia
+
+                    </label>
+
+
+                    <div class="opciones">
+
+
+                        <div class="opcion">
 
                             <input
-                                id="nombre"
-                                type="text"
-                                placeholder="Nombre y dos apellidos"
-                                autocomplete="name"
+                                type="radio"
+                                name="asistencia"
+                                id="si"
+                                value="SI"
                             >
 
-                        </div>
+                            <label for="si">
 
+                                Sí asistiré
 
-                        <div class="grupo">
-
-                            <label class="etiqueta">
-                                Asistencia
                             </label>
 
-
-                            <div class="opciones">
-
-
-                                <div class="opcion">
-
-                                    <input
-                                        type="radio"
-                                        name="asistencia"
-                                        id="si"
-                                        value="SI"
-                                    >
-
-                                    <label for="si">
-                                        Sí asistiré
-                                    </label>
-
-                                </div>
-
-
-                                <div class="opcion">
-
-                                    <input
-                                        type="radio"
-                                        name="asistencia"
-                                        id="no"
-                                        value="NO"
-                                    >
-
-                                    <label for="no">
-                                        No asistiré
-                                    </label>
-
-                                </div>
-
-
-                            </div>
-
                         </div>
 
 
-                        <button
-                            class="boton"
-                            id="boton"
-                            onclick="enviar()"
-                        >
-                            Enviar confirmación
-                        </button>
+                        <div class="opcion">
 
+                            <input
+                                type="radio"
+                                name="asistencia"
+                                id="no"
+                                value="NO"
+                            >
 
-                        <div
-                            id="mensaje"
-                            class="mensaje">
-                        </div>
+                            <label for="no">
 
+                                No asistiré
 
-                        <!-- PASE -->
+                            </label>
 
-                        <div
-                            id="pase"
-                            class="pase">
                         </div>
 
 
@@ -1025,34 +1615,73 @@ html {
 
                 </div>
 
+
+                <button
+                    class="boton"
+                    id="boton"
+                    type="button"
+                    onclick="enviar()">
+
+                    Enviar confirmación
+
+                </button>
+
+
+                <div
+                    id="mensaje"
+                    class="mensaje">
+
+                </div>
+
+
+                <div
+                    id="pase"
+                    class="pase">
+
+                </div>
+
+
             </div>
 
-        </section>
-
+        </div>
 
     </div>
+
+</section>
+
+
+</div>
 
 </div>
 
 
-<!-- REPRODUCTOR DE AUDIO -->
+<!-- ==================================================
+     MÚSICA
+================================================== -->
 
-<audio id="bg-music" loop>
+<audio id="bg-music"
+       loop>
 
-    <source src="cancion.mp3" type="audio/mpeg">
+    <source
+        src="cancion.mp3"
+        type="audio/mpeg">
 
     Tu navegador no soporta el elemento de audio.
 
 </audio>
 
 
-<!-- BOTÓN MÚSICA -->
+<!-- ==================================================
+     BOTÓN MÚSICA
+================================================== -->
 
 <div id="music-control"
      class="hidden"
      title="Reproducir / Pausar música">
 
-    <svg id="icon-speaker" viewBox="0 0 24 24">
+
+    <svg id="icon-speaker"
+         viewBox="0 0 24 24">
 
         <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
 
@@ -1061,7 +1690,7 @@ html {
 
     <svg id="icon-pause"
          viewBox="0 0 24 24"
-         style="display: none;">
+         style="display:none;">
 
         <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
 
@@ -1072,130 +1701,197 @@ html {
 
 <script>
 
+/* ==================================================
+   API
+================================================== */
 
-/* ======================================================
+const API_URL =
+    'https://script.google.com/macros/s/AKfycbyhKAlP-qujK1wFTBLsXt5x4jvJ3IEp39z7tKjiKAmcYCUZVgSn0kCVj-H4uohPJ4hx/exec'
+
+
+/* ==================================================
    BIENVENIDA Y MÚSICA
-====================================================== */
+================================================== */
 
 const welcomeScreen =
-    document.getElementById('welcome-screen');
+    document.getElementById(
+        'welcome-screen'
+    );
+
 
 const mainContent =
-    document.getElementById('main-content');
+    document.getElementById(
+        'main-content'
+    );
+
 
 const bgMusic =
-    document.getElementById('bg-music');
+    document.getElementById(
+        'bg-music'
+    );
+
 
 const musicControl =
-    document.getElementById('music-control');
+    document.getElementById(
+        'music-control'
+    );
+
 
 const iconSpeaker =
-    document.getElementById('icon-speaker');
+    document.getElementById(
+        'icon-speaker'
+    );
+
 
 const iconPause =
-    document.getElementById('icon-pause');
+    document.getElementById(
+        'icon-pause'
+    );
+
 
 let isPlaying = false;
 
 
-welcomeScreen.addEventListener('click', () => {
+welcomeScreen.addEventListener(
+    'click',
+    function() {
 
-    welcomeScreen.style.opacity = '0';
-
-    setTimeout(() => {
-
-        welcomeScreen.style.display = 'none';
-
-    }, 1000);
+        welcomeScreen.style.opacity =
+            '0';
 
 
-    mainContent.style.visibility = 'visible';
+        setTimeout(
+            function() {
 
-    mainContent.style.opacity = '1';
+                welcomeScreen.style.display =
+                    'none';
 
-    musicControl.classList.remove('hidden');
+            },
+            1000
+        );
 
 
-    bgMusic.play().then(() => {
+        mainContent.style.visibility =
+            'visible';
 
-        isPlaying = true;
+
+        mainContent.style.opacity =
+            '1';
+
+
+        musicControl.classList.remove(
+            'hidden'
+        );
+
+
+        bgMusic
+            .play()
+            .then(
+                function() {
+
+                    isPlaying = true;
+
+                    updateMusicIcon();
+
+                }
+            )
+            .catch(
+                function(error) {
+
+                    console.log(
+                        'Reproducción automática bloqueada:',
+                        error
+                    );
+
+                }
+            );
+
+    }
+);
+
+
+musicControl.addEventListener(
+    'click',
+    function() {
+
+        if (isPlaying) {
+
+            bgMusic.pause();
+
+            isPlaying = false;
+
+        }
+
+        else {
+
+            bgMusic.play();
+
+            isPlaying = true;
+
+        }
+
 
         updateMusicIcon();
 
-    }).catch(error => {
-
-        console.log(
-            "Reproducción automática bloqueada por el navegador:",
-            error
-        );
-
-    });
-
-});
-
-
-musicControl.addEventListener('click', () => {
-
-    if (isPlaying) {
-
-        bgMusic.pause();
-
-        isPlaying = false;
-
-    } else {
-
-        bgMusic.play();
-
-        isPlaying = true;
-
     }
-
-    updateMusicIcon();
-
-});
+);
 
 
 function updateMusicIcon() {
 
     if (isPlaying) {
 
-        iconSpeaker.style.display = 'none';
+        iconSpeaker.style.display =
+            'none';
 
-        iconPause.style.display = 'block';
+        iconPause.style.display =
+            'block';
 
-    } else {
+    }
 
-        iconSpeaker.style.display = 'block';
+    else {
 
-        iconPause.style.display = 'none';
+        iconSpeaker.style.display =
+            'block';
+
+        iconPause.style.display =
+            'none';
 
     }
 
 }
 
 
-/* ======================================================
+/* ==================================================
    ANIMACIONES
-====================================================== */
+================================================== */
 
 const observerOptions = {
-    threshold: 0.1
+
+    threshold: .1
+
 };
 
 
 const observer =
     new IntersectionObserver(
-        (entries) => {
+        function(entries) {
 
-            entries.forEach(entry => {
+            entries.forEach(
+                function(entry) {
 
-                if (entry.isIntersecting) {
+                    if (
+                        entry.isIntersecting
+                    ) {
 
-                    entry.target.classList.add('active');
+                        entry.target.classList.add(
+                            'active'
+                        );
+
+                    }
 
                 }
-
-            });
+            );
 
         },
         observerOptions
@@ -1206,48 +1902,60 @@ document
     .querySelectorAll(
         '.animate-zoom, .animate-float, .animate-flip-special'
     )
-    .forEach(el => {
+    .forEach(
+        function(el) {
 
-        observer.observe(el);
+            observer.observe(el);
 
-    });
+        }
+    );
 
 
-/* ======================================================
+/* ==================================================
    CARRUSEL
-====================================================== */
+================================================== */
 
 const sliderImages =
     document.querySelectorAll(
         '.slider-container img'
     );
 
+
 let currentSlide = 0;
 
 
-setInterval(() => {
+setInterval(
+    function() {
 
-    sliderImages[currentSlide]
-        .classList
-        .remove('active');
-
-
-    currentSlide =
-        (currentSlide + 1)
-        % sliderImages.length;
+        if (!sliderImages.length) {
+            return;
+        }
 
 
-    sliderImages[currentSlide]
-        .classList
-        .add('active');
-
-}, 3000);
+        sliderImages[currentSlide]
+            .classList
+            .remove('active');
 
 
-/* ======================================================
+        currentSlide =
+            (
+                currentSlide + 1
+            ) %
+            sliderImages.length;
+
+
+        sliderImages[currentSlide]
+            .classList
+            .add('active');
+
+    },
+    3000
+);
+
+
+/* ==================================================
    CUENTA REGRESIVA
-   22 DE AGOSTO DE 2026 - 3:00 PM
-====================================================== */
+================================================== */
 
 const DATE_TARGET =
     new Date(
@@ -1261,16 +1969,27 @@ const DATE_TARGET =
 
 
 const days =
-    document.getElementById('days');
+    document.getElementById(
+        'days'
+    );
+
 
 const hours =
-    document.getElementById('hours');
+    document.getElementById(
+        'hours'
+    );
+
 
 const minutes =
-    document.getElementById('minutes');
+    document.getElementById(
+        'minutes'
+    );
+
 
 const seconds =
-    document.getElementById('seconds');
+    document.getElementById(
+        'seconds'
+    );
 
 
 const MS = 1000;
@@ -1295,6 +2014,7 @@ function format(n) {
 
     const now =
         new Date();
+
 
     let dur =
         DATE_TARGET - now;
@@ -1345,183 +2065,216 @@ function format(n) {
 })();
 
 
-/* ======================================================
-   GOOGLE APPS SCRIPT
-====================================================== */
-
-const API_URL =
-    'https://script.google.com/macros/s/AKfycbw9I5q2mc3bGu9dkKVnd-d8_siejjepoPLtCLWNmoRj0_dwjm69Gc-5ILAg8Zh4-_hp/exec'
-
-
-/* ======================================================
-   LLAMAR API
-====================================================== */
+/* ==================================================
+   JSONP
+================================================== */
 
 function llamarAPI(parametros) {
 
-    return new Promise((resolve, reject) => {
+    return new Promise(
+        function(resolve, reject) {
 
-        const callback =
-            'cb_' +
-            Date.now() +
-            '_' +
-            Math.floor(Math.random() * 999999);
-
-        const script =
-            document.createElement('script');
-
-        const query =
-            new URLSearchParams();
-
-        Object.keys(parametros || {}).forEach(function(clave) {
-            query.append(
-                clave,
-                parametros[clave] == null
-                    ? ''
-                    : String(parametros[clave])
-            );
-        });
-
-        query.append(
-            'callback',
-            callback
-        );
-
-        /* Evita que Chrome/GitHub reutilice una respuesta en caché */
-        query.append(
-            '_',
-            Date.now().toString()
-        );
-
-        let terminado = false;
-
-        const tiempo =
-            setTimeout(function() {
-
-                if (terminado) {
-                    return;
-                }
-
-                terminado = true;
-                limpiar();
-
-                reject(
-                    new Error(
-                        'Tiempo de espera agotado al comunicarse con Google Apps Script.'
-                    )
+            const callback =
+                '__rsvp_' +
+                Date.now() +
+                '_' +
+                Math.floor(
+                    Math.random() * 1000000
                 );
 
-            }, 30000);
+
+            const script =
+                document.createElement(
+                    'script'
+                );
 
 
-        window[callback] =
-            function(data) {
+            let terminado = false;
 
-                if (terminado) {
-                    return;
-                }
 
-                terminado = true;
+            const timeout =
+                setTimeout(
+                    function() {
+
+                        if (terminado) {
+                            return;
+                        }
+
+
+                        terminado = true;
+
+
+                        limpiar();
+
+
+                        reject(
+                            new Error(
+                                'Tiempo de espera agotado al comunicarse con Google Apps Script.'
+                            )
+                        );
+
+                    },
+                    30000
+                );
+
+
+            function limpiar() {
 
                 clearTimeout(
-                    tiempo
+                    timeout
                 );
 
-                limpiar();
 
-                resolve(
-                    data
-                );
+                script.onload = null;
 
-            };
+                script.onerror = null;
 
 
-        function limpiar() {
+                if (
+                    script.parentNode
+                ) {
 
-            clearTimeout(
-                tiempo
+                    script.parentNode.removeChild(
+                        script
+                    );
+
+                }
+
+
+                try {
+
+                    delete window[callback];
+
+                }
+
+                catch(e) {
+
+                    window[callback] =
+                        undefined;
+
+                }
+
+            }
+
+
+            window[callback] =
+                function(data) {
+
+                    if (terminado) {
+                        return;
+                    }
+
+
+                    terminado = true;
+
+
+                    limpiar();
+
+
+                    resolve(data);
+
+                };
+
+
+            const query =
+                [];
+
+
+            Object.keys(
+                parametros || {}
+            ).forEach(
+                function(clave) {
+
+                    query.push(
+                        encodeURIComponent(
+                            clave
+                        ) +
+                        '=' +
+                        encodeURIComponent(
+                            parametros[clave] == null
+                                ? ''
+                                : String(
+                                    parametros[clave]
+                                )
+                        )
+                    );
+
+                }
             );
 
-            try {
-                delete window[callback];
-            } catch (e) {
-                window[callback] = undefined;
-            }
 
-            if (
-                script &&
-                script.parentNode
-            ) {
-                script.parentNode.removeChild(
-                    script
-                );
-            }
+            query.push(
+                'callback=' +
+                encodeURIComponent(
+                    callback
+                )
+            );
+
+
+            query.push(
+                '_=' +
+                Date.now()
+            );
+
+
+            script.type =
+                'text/javascript';
+
+
+            script.async = true;
+
+
+            script.src =
+                API_URL +
+                '?' +
+                query.join('&');
+
+
+            script.onerror =
+                function() {
+
+                    if (terminado) {
+                        return;
+                    }
+
+
+                    terminado = true;
+
+
+                    limpiar();
+
+
+                    reject(
+                        new Error(
+                            'El navegador no pudo cargar la respuesta de Google Apps Script.'
+                        )
+                    );
+
+                };
+
+
+            /*
+             * MUY IMPORTANTE:
+             *
+             * Se agrega directamente al BODY
+             * después de que el documento está cargado.
+             */
+
+            document.body.appendChild(
+                script
+            );
 
         }
-
-
-        script.async = true;
-
-        /*
-         * No usamos fetch aquí.
-         * Google Apps Script ContentService utiliza JSONP,
-         * que permite la comunicación entre GitHub Pages
-         * y script.google.com sin depender de CORS.
-         */
-        script.src =
-            API_URL +
-            '?' +
-            query.toString();
-
-
-        script.onerror =
-            function() {
-
-                if (terminado) {
-                    return;
-                }
-
-                terminado = true;
-
-                clearTimeout(
-                    tiempo
-                );
-
-                limpiar();
-
-                reject(
-                    new Error(
-                        'El navegador no pudo cargar la respuesta de Google Apps Script.'
-                    )
-                );
-
-            };
-
-
-        /*
-         * Apps Script puede redirigir el ContentService a
-         * script.googleusercontent.com. El script debe
-         * agregarse al HEAD para que Chrome lo trate como
-         * un recurso JavaScript externo normal.
-         */
-        (
-            document.head ||
-            document.body ||
-            document.documentElement
-        ).appendChild(
-            script
-        );
-
-    });
+    );
 
 }
 
-/* ======================================================
+
+/* ==================================================
    ENVIAR CONFIRMACIÓN
-====================================================== */
+================================================== */
 
 async function enviar() {
-
 
     const nombre =
         document
@@ -1556,7 +2309,9 @@ async function enviar() {
         );
 
 
-    /* VALIDAR NOMBRE */
+    /* ==================================================
+       VALIDAR NOMBRE
+    ================================================== */
 
     if (!nombre) {
 
@@ -1571,7 +2326,9 @@ async function enviar() {
     }
 
 
-    /* VALIDAR APELLIDOS */
+    /* ==================================================
+       VALIDAR APELLIDOS
+    ================================================== */
 
     if (
         nombre.split(/\s+/).length < 3
@@ -1588,7 +2345,9 @@ async function enviar() {
     }
 
 
-    /* VALIDAR ASISTENCIA */
+    /* ==================================================
+       VALIDAR ASISTENCIA
+    ================================================== */
 
     if (!asistencia) {
 
@@ -1606,12 +2365,16 @@ async function enviar() {
     boton.disabled =
         true;
 
+
     boton.textContent =
         'Enviando...';
 
 
-    try {
+    mensaje.className =
+        'mensaje';
 
+
+    try {
 
         const respuesta =
             await llamarAPI({
@@ -1628,37 +2391,48 @@ async function enviar() {
             });
 
 
-        /* RESPUESTA INCORRECTA */
+        console.log(
+            'Respuesta Apps Script:',
+            respuesta
+        );
 
-        if (!respuesta.ok) {
+
+        if (
+            !respuesta ||
+            respuesta.ok !== true
+        ) {
 
             mensaje.className =
                 'mensaje visible';
 
             mensaje.textContent =
-                respuesta.mensaje;
+                respuesta &&
+                respuesta.mensaje
+                    ? respuesta.mensaje
+                    : 'El sistema no pudo procesar la confirmación.';
 
             return;
 
         }
 
 
-        /* MENSAJE */
-
         mensaje.className =
             'mensaje visible';
 
+
         mensaje.textContent =
-            respuesta.mensaje;
+            respuesta.mensaje ||
+            'Confirmación recibida.';
 
 
-        /* MOSTRAR PASE */
+        /* ==================================================
+           MOSTRAR PASE
+        ================================================== */
 
         if (
             respuesta.listaPases &&
-            respuesta.listaPases.length
+            respuesta.listaPases.length > 0
         ) {
-
 
             const p =
                 respuesta.listaPases[0];
@@ -1673,21 +2447,33 @@ async function enviar() {
                 <div id="contenidoPase">
 
                     <div class="pase-titulo">
+
                         Pase de entrada
+
                     </div>
+
 
                     <div class="pase-linea"></div>
 
+
                     <div class="pase-nombre">
+
                         ${escapar(p.nombre)}
+
                     </div>
+
 
                     <div class="codigo">
+
                         ${escapar(p.codigo)}
+
                     </div>
 
+
                     <div class="codigo-texto">
+
                         Código de acceso
+
                     </div>
 
                 </div>
@@ -1696,23 +2482,33 @@ async function enviar() {
                 <button
                     type="button"
                     class="boton-descargar"
-                    onclick="descargarPase()"
-                >
+                    onclick="descargarPase()">
+
                     Descargar pase
+
                 </button>
 
             `;
 
         }
 
+        else {
+
+            pase.className =
+                'pase';
+
+            pase.innerHTML =
+                '';
+
+        }
 
     }
 
 
     catch(error) {
 
-
         console.error(
+            'ERROR RSVP:',
             error
         );
 
@@ -1724,12 +2520,10 @@ async function enviar() {
         mensaje.textContent =
             'No se pudo conectar con el sistema.';
 
-
     }
 
 
     finally {
-
 
         boton.disabled =
             false;
@@ -1738,18 +2532,16 @@ async function enviar() {
         boton.textContent =
             'Enviar confirmación';
 
-
     }
 
 }
 
 
-/* ======================================================
+/* ==================================================
    DESCARGAR PASE
-====================================================== */
+================================================== */
 
 async function descargarPase() {
-
 
     const contenido =
         document.getElementById(
@@ -1770,6 +2562,13 @@ async function descargarPase() {
         );
 
 
+    if (!boton) {
+
+        return;
+
+    }
+
+
     boton.disabled =
         true;
 
@@ -1780,17 +2579,12 @@ async function descargarPase() {
 
     try {
 
-
-        /* CARGAR HTML2CANVAS */
-
         if (
             !window.html2canvas
         ) {
 
-
             await new Promise(
-                (resolve, reject) => {
-
+                function(resolve, reject) {
 
                     const script =
                         document.createElement(
@@ -1820,15 +2614,12 @@ async function descargarPase() {
         }
 
 
-        /* CREAR IMAGEN */
-
         const canvas =
             await html2canvas(
                 contenido,
                 {
 
-                    scale:
-                        3,
+                    scale: 3,
 
                     backgroundColor:
                         '#fffafb',
@@ -1846,11 +2637,8 @@ async function descargarPase() {
             );
 
 
-        /* DESCARGAR */
-
         canvas.toBlob(
             function(blob) {
-
 
                 if (!blob) {
 
@@ -1907,19 +2695,17 @@ async function descargarPase() {
                     1000
                 );
 
-
             },
             'image/png'
         );
-
 
     }
 
 
     catch(error) {
 
-
         console.error(
+            'ERROR DESCARGA:',
             error
         );
 
@@ -1928,12 +2714,10 @@ async function descargarPase() {
             'No se pudo descargar el pase. Intenta nuevamente.'
         );
 
-
     }
 
 
     finally {
-
 
         boton.disabled =
             false;
@@ -1947,12 +2731,11 @@ async function descargarPase() {
 }
 
 
-/* ======================================================
-   NOMBRE DEL ARCHIVO
-====================================================== */
+/* ==================================================
+   NOMBRE ARCHIVO
+================================================== */
 
 function obtenerNombreArchivo() {
-
 
     const nombre =
         document
@@ -1985,12 +2768,11 @@ function obtenerNombreArchivo() {
 }
 
 
-/* ======================================================
+/* ==================================================
    ESCAPAR TEXTO
-====================================================== */
+================================================== */
 
 function escapar(texto) {
-
 
     return String(texto)
 
@@ -2021,10 +2803,8 @@ function escapar(texto) {
 
 }
 
-
 </script>
 
 </body>
 
 </html>
- 
